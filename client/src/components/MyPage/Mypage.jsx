@@ -80,7 +80,7 @@ export default class Mypage extends Component {
                     {Object.keys(this.state.userData).length === 0 &&
                     this.state.userData.constructor === Object
                       ? null
-                      : this.state.userData.fullName}
+                      : this.state.userData.username}
                   </b>
                 </div>
               </div>
