@@ -1,0 +1,62 @@
+.font-color-black-searchbar {
+    color: rgba(0, 0, 0, .4);
+}
+
+.searchbar-container {
+    width: 100%;
+}
+
+.input-parent {
+    position: relative;
+    width: 100%;
+}
+
+.searchbar-wrapper {
+    position: sticky;
+    top: 52px;
+    z-index: 100;
+    background-color: white;
+    height: 55px;
+    padding: 7px 8px;
+}
+
+.search-icon {
+    left: 6px;
+}
+
+.mike-icon {
+    right: 6px;
+}
+
+.search-icon,
+.mike-icon {
+    position: absolute;
+    top: 6px;
+}
+
+.searchbar-button {
+    background-color: #1a75ff;
+    color: white;
+    border: none;
+    border-radius: 0px 4px 4px 0px !important;
+    padding: 8px 10px;
+    margin: 0px 0px 0px 3px;
+    font-weight: 700;
+}
+
+.searchbar-input {
+    padding-left: 37px;
+    padding-right: 7px;
+    min-height: 40px;
+    border: 2px solid #1a75ff;
+    border-radius: 4px 0px 0px 4px;
+    width: 100%;
+}
+
+.searchbar-input:focus {
+    outline: none;
+}
+
+.searchbar-input::placeholder {
+    color: rgba(0, 0, 0, .4);
+}

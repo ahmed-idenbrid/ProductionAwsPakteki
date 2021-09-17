@@ -1,0 +1,44 @@
+
+#myNavcat
+{
+    z-index:3000;
+    width: 100% !important;
+}
+.shadow{
+  background-color: #333;
+  opacity: 0.6;
+}
+.overlay {
+  width: 0;
+  height: 100%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right:100%;
+  overflow-x: hidden;
+  transition: 0.2s;
+}
+.overlay-content {
+  position: relative;
+  top: 0%;
+  width:1000px;
+  background: #fff;
+  text-align: center;
+}
+.ranking-container-heading{
+  /* margin: 21px 0px 16px 0px;  STYLE-BEFORE-BREADCRUMB */
+  margin: 8px 0px 0px 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.sidebar_banner {
+  max-width: 100%;
+}
+
+.border-light-color{
+  border-bottom: 0.5px solid #dee2e6;
+}
+.bg-light-dark{
+background-color: #F8F9FA;
+}

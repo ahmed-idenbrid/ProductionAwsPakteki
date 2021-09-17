@@ -1,0 +1,161 @@
+
+#myNav
+{
+    z-index:300;
+}
+.shadow{
+  background-color: #333;
+  opacity: 0.6;
+}
+.profileInfo{
+  display: flex;
+}
+.sideBarUserName{
+ display: flex;
+ flex-direction: column;
+ align-items: flex-start;
+}
+.sideBarUserName > span{
+font-size: 12px;
+}
+.loginLink{
+  display: block;
+  font-size: 14px;
+  text-align: center;
+  width: 100%;
+  padding: 10px 0px;
+
+}
+.profileImage{
+  height: 40px;
+    width: 40px;
+    border-radius: 100px;
+}
+.overlay-nav-right {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  overflow-x: hidden;
+  transition: 0.2s;
+}
+.overlay-content-right {
+  position: relative;
+  top: 0%;
+  width:1000px;
+  max-height: 100vh;
+  overflow-y: scroll;
+  background: #fff;
+  text-align: center;
+}
+
+.sidebar_banner {
+  max-width: 100%;
+}
+.HamburgerMenu>span
+{
+ display: block;
+ height: 3px;
+ width: 25px;
+ border-radius: 15px;
+ margin-bottom: 4px;   
+ background-color: grey;
+}
+.border-light-color{
+  
+}
+.pageLinksLight, .handleLogOut{
+  border-bottom: 0.5px solid #dee2e6;
+  padding: 12px;
+  text-align: left;
+  max-width: 100%;
+  flex: 0 0 100%;
+}
+.myPageLink{
+  border-bottom: 0.5px solid #dee2e6;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.settingLink{
+  border-bottom: 0.5px solid #dee2e6;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+}
+.rightArrow{
+  font-size: 14px;
+}
+.Companies{
+  max-width: 100%;
+  flex: 0 0 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0px;
+}
+.Companies > a > .IdenbridCompanyLogo{
+  height: 40px;
+  padding: 4px 0px;
+  padding-right: 12px;
+}
+.Companies > .titleCompany{
+font-size: 12px;
+}
+.bgDarkTitle{
+  background-color: #F8F9FA;
+  border-bottom: 0.5px solid #dee2e6;
+  text-align: left;
+  max-width: 100%;
+  flex: 0 0 100%;
+  padding: 3px 12px;
+}
+.user_name{
+  font-size: 0.9rem;
+  padding: 8px 0px;
+}
+.user-id, .user-name{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0.5px solid #dee2e6;
+  font-size: 0.9rem;
+
+}
+.input-search{
+  display: flex;
+  margin: 0px;
+}
+.searchBar{
+height: 40px;
+/* width: 100%; */
+width: 204px;
+border-radius: 0px 0px 0px 0px;
+border: 0.5px solid #dee2e6;
+padding-left: 10px;
+}
+
+.searchBar:focus{
+ outline: none;
+  }
+.searchbar-button
+{
+    background-color: #1a75ff;
+    color: white;
+    border: none;
+    border-radius: 0px 0px 0px 0px !important;
+    padding: 8px 10px;
+}
+@media screen and (min-width:769px) {
+ .searchBar{
+   width: 100%;
+ } 
+}
+.font-size-14
+{
+  font-size: 14px;
+}

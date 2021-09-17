@@ -1,0 +1,69 @@
+.mypage-header-icon
+{
+    color: #c5c5c5;
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.
+{
+    border-radius: 4px;
+}
+.my-page-content
+{
+    border-bottom: 1px solid #CCCED6;
+    padding: 15px 0px;
+}
+.mypage-header-icon > svg
+{
+    vertical-align: top;
+}
+.envelope-msg{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    padding: 15px 0px;
+    border-radius: 6px;
+}
+
+.react-tabs__tab{
+    width: 50%;
+    border: none; 
+    border-radius: 0px !important;
+    text-align: center;
+    padding: 10px 0px;
+    background-color: #fff;
+}
+.react-tabs__tab--selected{
+    border-bottom: 1px solid rgb(88, 147, 241) !important;
+    color: rgb(88, 147, 241);
+    outline: none !important;
+}
+.profile-section{
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    
+}
+.profile-img{
+    height: 50px;
+    width: 50px;
+    border-radius:100px;
+
+}
+.userDescription{
+    font-size: 10px;
+    font-weight: bold;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.userName{
+    font-size: 11px;
+}
+.userSetting{
+    font-size: 90%;
+}

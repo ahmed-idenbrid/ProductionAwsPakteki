@@ -1,0 +1,56 @@
+:root {
+  --text-color: #444444;
+}
+.navbar {
+  box-shadow: 0px 0px 5px 0px;
+  padding: 6px 10px;
+  position: relative;
+  background-color: #fff;
+  z-index: 200;
+  position: fixed;
+  top: 0px;
+}
+.search_icon,
+.notification_icon {
+  font-size: 1.3em;
+  color: var(--text-color);
+  cursor: pointer;
+}
+.search_icon {
+  font-size: 1.2em;
+}
+.theme-font
+{
+  font-weight: 700;
+  color: rgba(0,0,0,.73);
+}
+.font-size-14
+{
+  font-size: 14px;
+}
+.Header__iconBadge {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 10px;
+  height: 10px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background-color: #fd3344;
+  background-clip: padding-box;
+}
+p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1em;
+  font-weight: 300;
+  line-height: 1.7em;
+  color: #999;
+}
+
+a,
+a:hover,
+a:focus {
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.3s;
+}

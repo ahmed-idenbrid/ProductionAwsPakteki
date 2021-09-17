@@ -1,0 +1,13 @@
+.disaster-main-container
+{
+    background-color: #141751;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: white;
+}
+.disaster-main-container > p
+{
+    color: white;
+    margin: 0;
+}
