@@ -31,7 +31,9 @@ class AllNewsCategories extends Component {
         });
       }
       if (res.data.message) {
-        window.location.reload();
+        this.forceUpdate(() => {
+          window.location.reload();
+        });
       }
     });
   };
