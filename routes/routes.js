@@ -34,7 +34,7 @@ router.post("/news/all", async (req, res) => {
     res.send(SaveAllNews);
   } catch (error) {
     res.json({
-      message: error
+      message: error,
     });
   }
 });
@@ -303,7 +303,16 @@ router.post("/news/all", async (req, res) => {
 //     res.json({message:error})
 //   }
 // });
-// // submit a SaveWriterNewsSchema in mongo db end
+
+router.get("/news/all", async (req, res) => {
+  try {
+    const GetAllNewsData = await AllNewsModal.find();
+    res.send({ Success: true, newsData: GetAllNewsData });
+  } catch (error) {
+    res.send({ error: error.message });
+  }
+});
+
 // get all news from mongodb
 router.get("/news/all/:chunkIndex", async (req, res) => {
   try {
@@ -314,14 +323,24 @@ router.get("/news/all/:chunkIndex", async (req, res) => {
     });
     const chunkedNewsData = await Collect(sortedNewsByDate).chunk(20).all();
 
-    fileSystem.readFile("./dataCollectionFiles/allNewsData.json", function(err, data) {
-			if (data.length == 0) {  
-				CreateFileAndSendData(chunkedNewsData, req.params.chunkIndex, res);
-			}
-		})
-    if (fileSystem.existsSync("./dataCollectionFiles/allNewsData.json") &&
-      JSON.parse(fileSystem.readFileSync("./dataCollectionFiles/allNewsData.json")).length * 20 < GetAllNewsData.length) {
-      console.log("fething new data");
+    fileSystem.readFile(
+      "./dataCollectionFiles/allNewsData.json",
+      function (err, data) {
+        if (data.length == 0) {
+          CreateFileAndSendData(chunkedNewsData, req.params.chunkIndex, res);
+        }
+      }
+    );
+
+    if (
+      fileSystem.existsSync("./dataCollectionFiles/allNewsData.json") &&
+      JSON.parse(
+        fileSystem.readFileSync("./dataCollectionFiles/allNewsData.json")
+      ).length *
+        20 <
+        GetAllNewsData.length
+    ) {
+      console.log("fetching new data");
       CreateFileAndSendData(chunkedNewsData, req.params.chunkIndex, res);
     } else if (
       fileSystem.existsSync("./dataCollectionFiles/allNewsData.json")
@@ -334,7 +353,7 @@ router.get("/news/all/:chunkIndex", async (req, res) => {
     }
   } catch (error) {
     res.send({
-      message: error.message
+      message: error.message,
     });
   }
 });
@@ -352,18 +371,18 @@ router.get("/news/all/getCategoryNews/:chunkIndex", async (req, res) => {
       });
       if (chunkData === undefined) {
         res.send({
-          Message: "No Data Found"
+          Message: "No Data Found",
         });
       } else {
         res.send({
           success: true,
-          chunkData
+          chunkData,
         });
       }
     }
   } catch (err) {
     res.send({
-      Message: err.message
+      Message: err.message,
     });
   }
 });
@@ -371,20 +390,23 @@ router.get("/news/all/getCategoryNews/:chunkIndex", async (req, res) => {
 router.post("/newsLiked", async (req, res) => {
   try {
     const newsData = await AllNewsModal.findById(req.body.newsId);
-    await AllNewsModal.updateOne({
-      _id: req.body.newsId
-    }, {
-      $push: {
-        likes: req.body
+    await AllNewsModal.updateOne(
+      {
+        _id: req.body.newsId,
       },
-      no_of_likes: newsData.no_of_likes + 1
-    });
+      {
+        $push: {
+          likes: req.body,
+        },
+        no_of_likes: newsData.no_of_likes + 1,
+      }
+    );
     res.send({
-      success: true
+      success: true,
     });
   } catch (error) {
     res.send({
-      message: error.message
+      message: error.message,
     });
   }
 });
@@ -399,18 +421,21 @@ router.post("/newsUnLiked", async (req, res) => {
     if (index > -1) {
       newsLikesData.splice(index, 1);
     }
-    await AllNewsModal.updateOne({
-      _id: req.body.newsId
-    }, {
-      likes: newsLikesData,
-      no_of_likes: newsData.no_of_likes - 1
-    });
+    await AllNewsModal.updateOne(
+      {
+        _id: req.body.newsId,
+      },
+      {
+        likes: newsLikesData,
+        no_of_likes: newsData.no_of_likes - 1,
+      }
+    );
     res.send({
-      success: true
+      success: true,
     });
   } catch (error) {
     res.send({
-      message: error.message
+      message: error.message,
     });
   }
 });
@@ -418,26 +443,29 @@ router.post("/newsUnLiked", async (req, res) => {
 router.post("/newsComment", async (req, res) => {
   try {
     const newsData = await AllNewsModal.findById(req.body.newsId);
-    await AllNewsModal.updateOne({
-      _id: req.body.newsId
-    }, {
-      $push: {
-        comments: {
-          newsId: req.body.newsId,
-          userId: req.body.userId,
-          username: req.body.username,
-          comment: req.body.comment,
-          commentNo: newsData.no_of_comments + 1,
-        },
+    await AllNewsModal.updateOne(
+      {
+        _id: req.body.newsId,
       },
-      no_of_comments: newsData.no_of_comments + 1,
-    });
+      {
+        $push: {
+          comments: {
+            newsId: req.body.newsId,
+            userId: req.body.userId,
+            username: req.body.username,
+            comment: req.body.comment,
+            commentNo: newsData.no_of_comments + 1,
+          },
+        },
+        no_of_comments: newsData.no_of_comments + 1,
+      }
+    );
     res.send({
-      success: true
+      success: true,
     });
   } catch (error) {
     res.send({
-      message: error.message
+      message: error.message,
     });
   }
 });
@@ -453,11 +481,11 @@ router.post("/newsCommentDelete", async (req, res) => {
       no_of_comments: newsData.no_of_comments - 1,
     });
     res.send({
-      success: true
+      success: true,
     });
   } catch (error) {
     res.send({
-      message: error.message
+      message: error.message,
     });
   }
 });
@@ -480,7 +508,7 @@ router.get("/news/rankedNews", async (req, res) => {
     res.json(rankedNews);
   } catch (err) {
     res.send({
-      message: error.message
+      message: error.message,
     });
   }
 });
@@ -505,7 +533,7 @@ router.get("/news/rankedNews/:newsName", async (req, res) => {
     res.send(rankedNews);
   } catch (error) {
     res.send({
-      message: error.message
+      message: error.message,
     });
   }
 });
@@ -514,26 +542,29 @@ router.post("/news/increaseViews", async (req, res) => {
   try {
     const newsData = await AllNewsModal.findById(req.body.newsId);
     await AllNewsModal.findByIdAndUpdate(
-      req.body.newsId, {
+      req.body.newsId,
+      {
         $push: {
           registered_views: {
             newsId: req.body.newsId,
             userId: req.body.userId === "" ? "" : req.body.userId,
           },
         },
-        no_of_registered_views: req.body.userId === "" ?
-          newsData.no_of_registered_views :
-          newsData.no_of_registered_views + 1,
-        no_of_nonregistered_views: req.body.userId === "" ?
-          newsData.no_of_nonregistered_views + 1 :
-          newsData.no_of_nonregistered_views,
+        no_of_registered_views:
+          req.body.userId === ""
+            ? newsData.no_of_registered_views
+            : newsData.no_of_registered_views + 1,
+        no_of_nonregistered_views:
+          req.body.userId === ""
+            ? newsData.no_of_nonregistered_views + 1
+            : newsData.no_of_nonregistered_views,
       },
       function (err) {
         if (err) {
           console.log(err);
         } else {
           res.send({
-            success: true
+            success: true,
           });
         }
       }
@@ -549,7 +580,7 @@ router.post("/news/increaseViews", async (req, res) => {
     );
   } catch (error) {
     res.send({
-      message: error.message
+      message: error.message,
     });
   }
 });
@@ -564,7 +595,7 @@ router.get("/news/history/:userId", async (req, res) => {
     res.send(newsData);
   } catch (error) {
     res.send({
-      message: error.message
+      message: error.message,
     });
   }
 });
@@ -577,14 +608,14 @@ router.get("/news/search", async (req, res) => {
     AllNewsModal.find({
       title: {
         $regex: searchedField,
-        $options: "$i"
+        $options: "$i",
       },
     }).then((result) => {
       res.send(result);
     });
   } catch (error) {
     res.json({
-      message: error
+      message: error,
     });
   }
 });
@@ -598,11 +629,11 @@ router.post("/user/feedback", async (req, res) => {
       message: req.body.message,
     });
     res.send({
-      message: "Success"
+      message: "Success",
     });
   } catch (error) {
     res.json({
-      message: error.message
+      message: error.message,
     });
   }
 });
@@ -713,11 +744,11 @@ router.get("/news/single/:newsId", async (req, res) => {
     const GetSingleNews = await AllNewsModal.findById(req.params.newsId);
     res.json({
       success: true,
-      singleNewsData: GetSingleNews
+      singleNewsData: GetSingleNews,
     });
   } catch (error) {
     res.json({
-      message: error
+      message: error,
     });
   }
 });
@@ -731,7 +762,7 @@ router.delete("/news/all/:newsId", async (req, res) => {
     res.json(RemoveSingleNews);
   } catch (error) {
     res.json({
-      message: error
+      message: error,
     });
   }
 });
@@ -743,7 +774,7 @@ router.post("/news/all/delete", async (req, res) => {
     res.send(RemoveAllNews);
   } catch (error) {
     res.json({
-      message: error
+      message: error,
     });
   }
 });
@@ -751,17 +782,20 @@ router.post("/news/all/delete", async (req, res) => {
 // patch single new news from mongon db end
 router.patch("/news/all/:newsid", async (req, res) => {
   try {
-    const RemoveSingleNews = await AllNewsModal.updateOne({
-      _id: req.params.newsid
-    }, {
-      $set: {
-        title: req.body.title
+    const RemoveSingleNews = await AllNewsModal.updateOne(
+      {
+        _id: req.params.newsid,
+      },
+      {
+        $set: {
+          title: req.body.title,
+        },
       }
-    });
+    );
     res.json(RemoveSingleNews);
   } catch (error) {
     res.json({
-      message: error
+      message: error,
     });
   }
 });

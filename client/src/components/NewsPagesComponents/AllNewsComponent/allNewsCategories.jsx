@@ -16,11 +16,11 @@ class AllNewsCategories extends Component {
     redirect: false,
   };
 
-  componentDidMount() {
-    this.getData(this.state.chunkIndex);
+  async componentDidMount() {
+    await this.getData(this.state.chunkIndex);
   }
-  getData = (chunkIndex) => {
-    axios.get(`${BaseURL}/news/all/${chunkIndex}`).then(async (res) => {
+  getData = async (chunkIndex) => {
+    await axios.get(`${BaseURL}/news/all/${chunkIndex}`).then(async (res) => {
       if (res.data.success && res.data.chunkData) {
         const map = await res.data.chunkData.map((obj) => {
           return this.state.AllNewsData.push(obj);
@@ -29,6 +29,9 @@ class AllNewsCategories extends Component {
           AllNewsData: [...this.state.AllNewsData, map],
           mounted: true,
         });
+      }
+      if (res.data.message) {
+        window.location.reload();
       }
     });
   };

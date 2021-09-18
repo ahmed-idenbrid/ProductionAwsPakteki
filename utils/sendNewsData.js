@@ -3,16 +3,9 @@ const fileSystem = require("fs");
 const CreateFileAndSendData = (chunkedData, chunkIndex, response) => {
   fileSystem.writeFileSync(
     "./dataCollectionFiles/allNewsData.json",
-    JSON.stringify(chunkedData),
-    function (err) {
-      if (err) {
-        response.send({ Message: err.message });
-        ReadExistingFileAndSendData(chunkIndex, response);
-      } else {
-        ReadExistingFileAndSendData(chunkIndex, response);
-      }
-    }
+    JSON.stringify(chunkedData)
   );
+  ReadExistingFileAndSendData(chunkIndex, response);
 };
 
 const ReadExistingFileAndSendData = (chunkIndex, response) => {
