@@ -2,10 +2,13 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import logo from '../../assets/pakteki-logo.svg';
 import './Login.css';
+import FootBar from "../../FootBar/FootBar";
+import Navbar from "../../NavBar/Navbar";
 export default class ForgotPassowrd extends Component {
   render() {
     return (
       <div className="">
+        <Navbar />
         <form>
           <div className="row m-0 forgot-section">
             <div className="col-11 col-md-8 col-lg-6 mx-auto mb-13">
@@ -30,7 +33,9 @@ export default class ForgotPassowrd extends Component {
             </div>
           </div>
         </form>
+        <FootBar />
       </div>
+      
     );
   }
 }
