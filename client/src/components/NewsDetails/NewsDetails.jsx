@@ -483,7 +483,7 @@ export default class NewsDetails extends Component {
                               </small>
                             ) : null}
                           </p>
-                          <small> {obj.comment} </small>
+                          <small className='color-grey'> {obj.comment} </small>
                         </span>
                       </div>
                     );

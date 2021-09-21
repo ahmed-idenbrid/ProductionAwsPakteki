@@ -18,6 +18,7 @@
 .footbar-item-container
 {
     padding: 5px;
+    color: grey;
 }
 .footbar-item-container-selected
 {
