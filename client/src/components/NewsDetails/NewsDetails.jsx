@@ -323,7 +323,7 @@ export default class NewsDetails extends Component {
             </div>
           </div>
           <div className="readMoreSection">
-            <a target="_blank" rel="" href={this.state.singleNews.permalink} className="btn info" style={{ padding: "5px 42px" }}>
+            <a target="_blank" rel="noopener noreferrer" href={this.state.singleNews.permalink} className="btn info" style={{ padding: "5px 42px" }}>
               Read More
             </a>
           </div>

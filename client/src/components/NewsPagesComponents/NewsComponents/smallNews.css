@@ -40,7 +40,6 @@
   margin: 0px;
   padding: 0px;
   font-weight: 700;
-  line-height: 22px;
   text-align: justify;
 }
 .newsDate{
@@ -96,7 +95,7 @@ color: grey;
   -webkit-line-clamp: 2;
   overflow: hidden;
   text-overflow: ellipsis;
-  height: 46px;
+  height: 40px;
 }
 
 .w-1rem
