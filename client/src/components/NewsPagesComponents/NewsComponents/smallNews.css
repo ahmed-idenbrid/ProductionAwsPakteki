@@ -58,22 +58,26 @@
   padding:0px 5px;
 }
 .comments-icon>svg{
-  font-size: 18px;
-  color: #698ac1;
+  font-size: 15px;
+  color: grey;
 }
 .counter-comments{
 font-size: 13px;
 padding-left: 3px;
+color: grey;
+
 }
 .viewIcon{
   padding-left: 6px;
 }
 .viewIcon>svg{
-font-size: 17px;
+font-size: 15px;
+color: grey;
 }
 .counter-views{
   font-size: 12px;
 padding-left: 4px;
+color: grey;
 }
 .dynamic-values{
   display: flex;

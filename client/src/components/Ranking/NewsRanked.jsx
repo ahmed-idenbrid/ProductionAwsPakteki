@@ -10,7 +10,7 @@ export default class NewsRank extends React.Component {
     return (
       <React.Fragment>
         <div className="row m-0 ranking-news">
-          <div className="col-4 col-md-2 d-flex pl-0 pt-1 pr-3">
+          <div className="col-4 col-md-2 d-flex pt-1 pr-3 justify-content-center">
             <div
               className="ranking-box-badge"
               style={{
@@ -32,19 +32,19 @@ export default class NewsRank extends React.Component {
               alt="ranking-img"
             />
           </div>
-          <div className="col-8 col-md-10 pr-0">
+          <div className="col-8 col-md-10 pr-0 pl-2">
             <div>
               <div className="title-rank-news pl-1">
                 {this.props.rankedNewsObj.title}
               </div>
               <p
-                className="pt-2"
+                className="pt-2 mb-1"
                 style={{ fontSize: "13px", height: "23px" }}
               >
                 {this.props.rankedNewsObj.date}
               </p>
               <div className="comments-block">
-                <div className="comments-conuter pl-1">
+                <div className="comments-conuter">
                   <span className="mb-0 small-icons-text-comments">
                     <FiMessageSquare className="commentIcon" /> &nbsp;
                     {this.props.rankedNewsObj.no_of_comments}
@@ -63,7 +63,7 @@ export default class NewsRank extends React.Component {
             </div>
           </div>
           <p
-            className="m-0 ml-4 w-100 pl-2 d-flex align-items-center justify-content-start"
+            className="ml-24-p mt-2 w-100 d-flex align-items-center justify-content-start"
             style={{ backgroundColor: "#edeff1", color: "#8d8d8d" }}
           >
             {this.props.rankedNewsObj.comments.length > 0 ? (

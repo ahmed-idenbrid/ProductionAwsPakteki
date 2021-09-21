@@ -112,12 +112,12 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.line-clamp-8{
+.line-clamp-5{
+  display: block;
   display: -webkit-box;
-  -webkit-line-clamp: 8;
-  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
   overflow: hidden;
-  height: 243px;
+  text-overflow: ellipsis;
   /* text-overflow: ellipsis; */
 }
 .single-comment {
@@ -248,6 +248,10 @@ button:focus {
   background-color: #F5F5F5;
   padding: 10px 0px;
   font-size: 13px;
+}
+.align-center-vertical
+{
+  margin: auto 0;
 }
 @media screen and (min-width:768px) {
   .breadcrumb-items-container{

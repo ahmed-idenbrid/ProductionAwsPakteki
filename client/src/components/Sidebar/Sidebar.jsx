@@ -94,7 +94,7 @@ export default function Sidebar({ history }) {
                 My page
               </Link>
               <Link to="/login" onClick={closeNav}>
-              <small className="text-fade">Please login <IoIosArrowForward className='rightArrow' /></small>
+              {userData.username ? '' :  <small className="text-fade">Please login <IoIosArrowForward className='rightArrow' /></small> }
               </Link>
               </div>
               <div className="bgDarkTitle">
@@ -148,7 +148,7 @@ export default function Sidebar({ history }) {
                 Setting
               </Link>
               <Link to="/login" onClick={closeNav}>
-              <small className="text-fade">Please login <IoIosArrowForward className='rightArrow'/></small>
+              {userData.username ? '' :  <small className="text-fade">Please login <IoIosArrowForward className='rightArrow' /></small> }
               </Link>
               </div>
               {Object.keys(userData).length === 0 &&

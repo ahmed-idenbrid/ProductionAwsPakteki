@@ -194,6 +194,7 @@ export default class NewsDetails extends Component {
               {/* {this.state.singleNews.channel
                       ? this.state.singleNews.channel
                       : "News Channel"} */}
+              <a href={this.state.singleNews.permalink}>
               <img
                 className="ChannelImage ml-2"
                 src={
@@ -243,6 +244,7 @@ export default class NewsDetails extends Component {
                 }
                 alt="channel"
               />
+              </a>
             </div>
           </div>
           <div className="news-details-text-container p-1">
@@ -304,7 +306,8 @@ export default class NewsDetails extends Component {
                     Nesciunt, et!
                   </p>
                 ) : (
-                  <div className="line-clamp-8">
+                  // Special property wasn't working in anywhere except inline-CSS for limiting lines
+                  <div className="line-clamp-5 px-2" style={{'-webkit-box-orient': 'vertical'}}> 
                     {this.state.singleNews.description}
                   </div>
                 )}
@@ -320,7 +323,7 @@ export default class NewsDetails extends Component {
             </div>
           </div>
           <div className="readMoreSection">
-            <a target="_blank" rel="noopener noreferrer" href={this.state.singleNews.permalink} className="btn info" style={{ padding: "5px 42px" }}>
+            <a target="_blank" rel="" href={this.state.singleNews.permalink} className="btn info" style={{ padding: "5px 42px" }}>
               Read More
             </a>
           </div>
@@ -372,7 +375,7 @@ export default class NewsDetails extends Component {
                   <div className="modal-dialog" role="document">
                     <div className="modal-content col-12">
                       <div className="modal-header">
-                        <h5 className="modal-title">Share</h5>{" "}
+                        <h5 className="modal-title">Lets share with your friends.</h5>{" "}
                         <button
                           type="button"
                           className="close"
@@ -435,6 +438,10 @@ export default class NewsDetails extends Component {
                   </div>
                 </div>
               </div>
+              
+              <b className='align-center-vertical'>
+              {this.state.singleNews.no_of_comments}
+              </b>
             </div>
             <div className="col-12 px-1 user-comments" id="bottom">
               {this.state.singleNews.comments === [] ||
@@ -444,11 +451,11 @@ export default class NewsDetails extends Component {
                     return (
                       <div className="single-comment mb-3" key={index}>
                         <img
-                          className="user-img"
+                          className="user-img align-center-vertical"
                           src="https://s.yimg.jp/images/jpnews/cre/comment/all/images/user_icon_color_blue.png"
                           alt="img not found"
                         />
-                        <span className="user-comment-wrap w-100 pb-3 pt-2">
+                        <span className="user-comment-wrap w-100 px-2 py-1">
                           <p className="w-100 m-0 d-flex align-items-center text-dark justify-content-between">
                             <small>
                               <b>
@@ -527,7 +534,7 @@ export default class NewsDetails extends Component {
               <small className="heading-related-news">
                 Related News
                 <div className="description-container-common col-12 p-0 my-1">
-                  <p className="font-size-12 mb-0">description</p>
+                  <p className="font-size-12 mb-0">Related to the news category you are checking</p>
                 </div>
               </small>
               {/* category section */}
@@ -584,7 +591,7 @@ export default class NewsDetails extends Component {
               <small className="heading-related-news">
                 Recommended News
                 <div className="description-container-common col-12 p-0 my-1">
-                  <p className="font-size-12 mb-0">description</p>
+                  <p className="font-size-12 mb-0">Recommended news based on your user experience</p>
                 </div>
               </small>
               {/* category section */}

@@ -81,7 +81,7 @@ export default class Register extends Component {
                       {/* <h5 className="my-3 pl-0 brand-name">Pakteki</h5> */}
                     </Link>
                   </div>
-                  <div className="text-left mb-4">
+                  <div className="text-left mb-2">
                     ID registration with Email
                   </div>
                   <input
@@ -142,7 +142,7 @@ export default class Register extends Component {
                       required
                     />
                   </li>
-                  <button className="btn danger my-4 text-capitalize">
+                  <button className="btn info my-4 text-capitalize fw-bolder">
                     Register
                   </button>
                   <Link to="/login" className="text-center info">

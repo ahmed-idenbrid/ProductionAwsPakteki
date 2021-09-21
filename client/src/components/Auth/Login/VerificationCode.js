@@ -24,7 +24,7 @@ export default class VerificationCode extends Component {
                   className="p-2 w-100"
                 />
                 <Link to="/newpassword" style={{ display: "contents" }}>
-                  <button className="btn btn-primary btn-block my-4 text-capitalize">
+                  <button className="btn info btn-block my-4 text-capitalize fw-bolder">
                     next
                   </button>
                 </Link>

@@ -30,6 +30,7 @@
 }
 .title-rank-news {
   font-size: 15px;
+  line-height: normal;
   display: -webkit-box;
   height: 40px;
   -webkit-line-clamp: 2;
@@ -86,4 +87,8 @@
     height: 90px;
     width: 90px;
   }
+}
+.ml-24-p
+{
+  margin-left: 24px;
 }
