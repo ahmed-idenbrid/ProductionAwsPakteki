@@ -194,7 +194,7 @@ export default class NewsDetails extends Component {
               {/* {this.state.singleNews.channel
                       ? this.state.singleNews.channel
                       : "News Channel"} */}
-              <a href={this.state.singleNews.permalink}>
+              <a target="_blank" rel="noopener noreferrer" href={this.state.singleNews.permalink}>
               <img
                 className="ChannelImage ml-2"
                 src={
@@ -291,7 +291,7 @@ export default class NewsDetails extends Component {
                   &nbsp;
                   {this.state.singleNews.no_of_comments}
                 </span>
-                <span className="mb-0 small-icons-text-comments px-1">
+                <span className="mb-0 small-icons-text-comments px-1" style={{verticalAlign:"middle"}}>
                   <FaRegEye style={{ fontSize: "15px" }} /> &nbsp;
                   {this.state.singleNews.no_of_registered_views +
                     this.state.singleNews.no_of_nonregistered_views}
@@ -349,8 +349,7 @@ export default class NewsDetails extends Component {
               } */}
               <label
                 htmlFor="input-comment"
-                style={{ cursor: "pointer", margin: "0px" }}
-              >
+                style={{ cursor: "pointer", margin: "0px" }}>
                 <VscComment /> Comment
               </label>
 
@@ -370,8 +369,7 @@ export default class NewsDetails extends Component {
                   tabIndex={-1}
                   role="dialog"
                   aria-labelledby="shareModalLabel"
-                  aria-hidden="true"
-                >
+                  aria-hidden="true">
                   <div className="modal-dialog" role="document">
                     <div className="modal-content col-12">
                       <div className="modal-header">

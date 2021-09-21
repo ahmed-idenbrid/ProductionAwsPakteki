@@ -13,13 +13,11 @@
 {
     width:10rem;
     height: 55px;
-    justify-content: center;
-    
+    justify-content: center;  
 }
 .footbar-item-container
 {
     padding: 5px;
-
 }
 .footbar-item-container-selected
 {

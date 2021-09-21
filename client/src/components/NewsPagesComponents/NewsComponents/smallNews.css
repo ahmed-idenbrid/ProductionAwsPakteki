@@ -41,6 +41,7 @@
   padding: 0px;
   font-weight: 700;
   text-align: justify;
+  margin-top: -2px;
 }
 .newsDate{
   font-size: 11px;
@@ -57,11 +58,11 @@
   padding:0px 5px;
 }
 .comments-icon>svg{
-  font-size: 15px;
+  font-size: 14px;
   color: grey;
 }
 .counter-comments{
-font-size: 13px;
+font-size: 12px;
 padding-left: 3px;
 color: grey;
 

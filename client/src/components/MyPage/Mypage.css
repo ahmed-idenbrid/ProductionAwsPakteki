@@ -6,10 +6,7 @@
     align-items: center;
     justify-content: center;
 }
-.
-{
-    border-radius: 4px;
-}
+
 .my-page-content
 {
     border-bottom: 1px solid #CCCED6;
@@ -66,4 +63,5 @@
 }
 .userSetting{
     font-size: 90%;
+    color: grey;
 }
