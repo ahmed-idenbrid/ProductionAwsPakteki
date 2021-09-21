@@ -42,7 +42,7 @@ const smallNewsComponent = ({ newsObj }) => {
           ></div>
         </figure>
         <div className="newsContent">
-          <h1 className="small-news-title" style={{}}>{newsObj.title}</h1>
+          <h1 className="small-news-title" style={{webkitBoxOrient:'vertical'}}>{newsObj.title}</h1>
           <div className="dynamic-values">
             <ul>
               <li>
