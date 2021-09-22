@@ -574,7 +574,7 @@ export default class NewsDetails extends Component {
             </div>
           </div>
           {/* Advertisement-banner */}
-          <div class="col-12 p-0">
+          <div className="col-12 p-0">
             <img
               src="/assets/images/ss.png"
               alt=""

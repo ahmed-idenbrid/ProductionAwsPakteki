@@ -21,7 +21,6 @@ class AllNewsCategories extends Component {
   }
   getData = async (chunkIndex) => {
     await axios.get(`${BaseURL}/news/all/${chunkIndex}`).then(async (res) => {
-      console.log(res,"data");
       if (res.data.success && res.data.chunkData) {
         const map = await res.data.chunkData.map((obj) => {
           return this.state.AllNewsData.push(obj);
