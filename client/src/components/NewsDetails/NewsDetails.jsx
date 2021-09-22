@@ -51,7 +51,7 @@ export default class NewsDetails extends Component {
   };
 
   async componentDidMount() {
-    await this.getSingleNewsData(this.props.routerParams.match.params.newsId);
+    await this.getNewsDataProp(this.props.routerParams.match.params.newsId);
     await axios.get(`${BaseURL}/news/all/0`).then((res) => {
       if (res.data.success && res.data.chunkData) {
         this.setState({
@@ -97,7 +97,7 @@ export default class NewsDetails extends Component {
           })
           .then((response) => {
             if (response.data.success) {
-              this.getSingleNewsData();
+              this.getNewsDataProp();
             }
           });
       }
@@ -118,7 +118,7 @@ export default class NewsDetails extends Component {
           })
           .then((response) => {
             if (response.data.success) {
-              this.getSingleNewsData();
+              this.getNewsDataProp();
             }
           });
       }
@@ -152,6 +152,8 @@ export default class NewsDetails extends Component {
       });
   }
 
+  getNewsDataProp=this.getSingleNewsData.bind(this)
+
   postNewsComment() {
     axios
       .post(BaseURL + "/newsComment", {
@@ -165,7 +167,7 @@ export default class NewsDetails extends Component {
       })
       .then((response) => {
         if (response.data.success) {
-          this.getSingleNewsData();
+          this.getNewsDataProp();
           this.setState({
             comment: "",
           });
@@ -474,7 +476,7 @@ export default class NewsDetails extends Component {
                                     })
                                     .then((response) => {
                                       if (response.data.success) {
-                                        this.getSingleNewsData();
+                                        this.getNewsDataProp();
                                       }
                                     });
                                 }}
