@@ -98,10 +98,9 @@ class NewsTabs extends Component {
         );
       }
     });
-  }
-
-  render() {
-    return (
+  };
+   render() {
+    return(
       <Fragment>
         <NavBar />
         <SearchBar routerParams={this.props.routerParams} searched={false} />
@@ -210,8 +209,7 @@ class NewsTabs extends Component {
               <div className="newsContainerWrap">
                 <AllNewsCategoriesComponent
                   userData={this.state.userData}
-                  routerParams={this.props.routerParams}
-                />
+                  routerParams={this.props.routerParams}/>
               </div>
             </div>
 

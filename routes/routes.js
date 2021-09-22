@@ -332,19 +332,11 @@ router.get("/news/all/:chunkIndex", async (req, res) => {
       }
     );
 
-    if (
-      fileSystem.existsSync("./dataCollectionFiles/allNewsData.json") &&
-      JSON.parse(
-        fileSystem.readFileSync("./dataCollectionFiles/allNewsData.json")
-      ).length *
-        20 <
-        GetAllNewsData.length
-    ) {
+    if (fileSystem.existsSync("./dataCollectionFiles/allNewsData.json") &&
+      JSON.parse(fileSystem.readFileSync("./dataCollectionFiles/allNewsData.json")).length * 20 < GetAllNewsData.length) {
       console.log("fetching new data");
       CreateFileAndSendData(chunkedNewsData, req.params.chunkIndex, res);
-    } else if (
-      fileSystem.existsSync("./dataCollectionFiles/allNewsData.json")
-    ) {
+    } else if (fileSystem.existsSync("./dataCollectionFiles/allNewsData.json")) {
       console.log("sending existing data");
       ReadExistingFileAndSendData(req.params.chunkIndex, res);
     } else {

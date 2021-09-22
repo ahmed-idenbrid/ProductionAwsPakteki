@@ -307,7 +307,7 @@ export default class NewsDetails extends Component {
                   </p>
                 ) : (
                   // Special property wasn't working in anywhere except inline-CSS for limiting lines
-                  <div className="line-clamp-5 px-2" style={{'-webkit-box-orient': 'vertical'}}> 
+                  <div className="line-clamp-5 px-2" style={{WebkitBoxOrient: 'vertical'}}> 
                     {this.state.singleNews.description}
                   </div>
                 )}
