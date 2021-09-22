@@ -3,6 +3,7 @@ import ReactPlayer from "react-player/lazy";
 import arylogo from "../channel_logo/ary_news.svg";
 import NavBar from "../../NavBar/Navbar";
 import FootBar from "../../FootBar/FootBar";
+import { Link } from "react-router-dom";
 class AryNewsLive extends React.Component {
   constructor(props) {
     super(props);
@@ -14,7 +15,7 @@ class AryNewsLive extends React.Component {
         <NavBar />
         <div className="row m-0 pb-5 mb-5 pt-1">
           <div className="col-12 p-0">
-            <img
+          <img
               src="/assets/images/ss.png"
               alt=""
               height={"100%"}
@@ -41,7 +42,9 @@ class AryNewsLive extends React.Component {
           {/* news start single */}
           <div className="col-12 p-0 my-1">
             <div className="my-page-content px-2 d-flex">
+              <Link to="">
               <img height={"100px"} src={arylogo} alt="" />
+              </Link>
               <div className="my-page-content-text ml-2 w-100 d-flex flex-column justify-content-between">
                 <div className="font-size-13 four-line">
                   <b>Pakistan News Live</b> <br />

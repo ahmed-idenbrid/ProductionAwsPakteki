@@ -15,16 +15,17 @@ const authRouter = require("./routes/authRoutes");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
-// const corsOpts = {
-//   origin: '*',
-//   methods: [
-//     'GET',
-//     'POST',
-//   ],
-//   allowedHeaders: [
-//     'Content-Type',
-//   ],
-// };
+app.use(corsOpts());
+const corsOpts = {
+  origin: '*',
+  methods: [
+    'GET',
+    'POST',
+  ],
+  allowedHeaders: [
+    'Content-Type',
+  ],
+};
 
 // app.use(cors(corsOpts));
 app.use("/api", routes);

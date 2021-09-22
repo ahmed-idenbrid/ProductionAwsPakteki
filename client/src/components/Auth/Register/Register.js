@@ -19,7 +19,7 @@ export default class Register extends Component {
     e.preventDefault();
     if (this.state.password === this.state.confirmPass) {
       axios
-        .post("http://3.142.50.232:5000/api/auth/register", {
+        .post("http://localhost:5000/api/auth/register", {
           fullName: this.state.fullName,
           username: this.state.username,
           emailAddress: this.state.email,
