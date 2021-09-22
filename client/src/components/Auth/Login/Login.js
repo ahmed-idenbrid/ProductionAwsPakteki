@@ -19,7 +19,7 @@ export default class Login extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:5000/api/auth/login", {
+      .post("http://3.142.50.232:5000/api/auth/login", {
         emailAddress: this.state.email,
         password: this.state.password,
       })
