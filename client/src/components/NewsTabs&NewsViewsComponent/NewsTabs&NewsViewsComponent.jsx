@@ -112,16 +112,14 @@ class NewsTabs extends Component {
           id="fixed-tabsBar"
           className="tabsBar"
           value={this.state.index}
-          onChange={this.handleChange}
-        >
+          onChange={this.handleChange}>
           <Tab
             className="p-0"
             label={
               <Link to="/news/all" className="tabs-text">
                 Main
               </Link>
-            }
-          />
+            }/>
           <Tab
             className="p-0"
             label={
