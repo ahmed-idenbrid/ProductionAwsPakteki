@@ -339,6 +339,7 @@ router.get("/news/all/:chunkIndex", async (req, res) => {
       console.log("sending existing data");
       ReadExistingFileAndSendData(req.params.chunkIndex, res);
     } else {
+      
       console.log("creating file and sending data");
       CreateFileAndSendData(chunkedNewsData, req.params.chunkIndex, res);
     }
