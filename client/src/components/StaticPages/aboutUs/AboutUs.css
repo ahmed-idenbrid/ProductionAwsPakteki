@@ -6,3 +6,168 @@
 {
     min-height: 100vh;
 }
+.section-1,.section-2-container
+{
+    border-radius: 15px;
+    min-height: 85vh;
+}
+.section-1
+{
+    background-color: rgb(255, 221, 221);
+}
+.section-2-container
+{
+    background-color: rgb(209, 229, 255);
+}
+.section-2
+{
+    background-color: #fff;
+    border-radius: 15px;
+}
+.section-5-container
+{
+    background-color: #fff;
+}
+.section-5
+{
+    background-color: rgb(255, 221, 221);
+    border-radius: 15px;
+}
+.section-5-sub-section-5,
+.section-5 > h3
+{
+    color: white;
+}
+
+.section-5 > p
+{
+    color: black;
+}
+.section-4
+{
+    background-color: rgb(255, 221, 221);
+    border-radius: 15px;
+}
+.section-3 > h3
+{
+    color: #5da3ff;
+}
+.section-1:nth-child(1),.section-2 > h4,.section-4 > h3
+{
+    color: indianred;
+}
+.section-1 > p,.section-2 > p,.section-3 > p,.section-5-sub-section-2 > p
+{
+    color: black;
+}
+.section-5-sub-section-2
+{
+    background-color:#5da3ff;
+    color: white;   
+    margin-left: 10%;
+    padding: 50px 70px;
+    text-align: center;
+    border-radius: 100% 100% 0 100%;
+    margin-top: -10%;
+}
+.section-5-sub-section-3
+{
+    background-color: #c7dfff;
+    color: white;
+    width: 60%;
+    margin-left: 40%;
+    padding: 30px;
+    text-align: center;
+    border-radius: 100% 100% 100% 0;
+    margin-top: -24%;
+}
+.section-5-sub-section-4
+{
+    background-color: indianred;
+    color: white;
+    width: 50%;
+    padding: 10px;
+    text-align: center;
+    border-radius: 100% 100% 0 100%;
+    margin-top: -55%;
+}
+.section-5-sub-section-5
+{
+    background-color: rgb(255, 221, 221);
+    border-radius: 15px;
+}
+.section-6
+{
+    border-radius: 15px;
+    background-color:#c7dfff;
+}
+.team-member
+{
+    margin-top: -13%;
+}
+.team-member > img
+{
+    border-radius: 100%;
+    width: 8rem;
+    height: 8rem;
+}
+.member-data > h5
+{
+    color: rgb(35, 0, 116);
+}
+.slide
+{
+    width: 4rem;
+    height: 4rem;
+    background-color: indianred;
+    border-radius: 100%;
+}
+.section-7-container
+{
+    color: white;
+    background-color: rgb(255, 221, 221);
+}
+.section-7
+{
+    background-color: indianred;
+    border-radius: 15px;
+}
+.section-7-sub-section-2
+{
+    color:black;
+    background-color: white;
+    border-radius: 15px;
+    margin-top: -25px;
+}
+.section-7-button
+{
+    border-radius: 25px;
+    padding: 10px 20px;
+    background-color: indianred;
+    color: white;
+    border: none;
+}
+.section-5-sub-section-5 > p
+{
+    color: black;
+}
+@media screen and (min-width:600px)
+{
+    /* .section-5-sub-section-2,.section-5-sub-section-3,.section-5-sub-section-4
+    {
+        display: none;
+    } */
+    .section-6
+    {
+        margin-top: 5% !important;
+    }
+    .team-member
+    {
+        margin-top: -6%;
+    }
+    .section-5-container
+    {
+        margin: auto 0 !important;
+    }
+
+}

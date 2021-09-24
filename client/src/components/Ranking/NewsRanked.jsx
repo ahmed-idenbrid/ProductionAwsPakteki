@@ -34,7 +34,7 @@ export default class NewsRank extends React.Component {
           </div>
           <div className="col-8 col-md-10 pr-0 pl-2">
             <div>
-              <div className="title-rank-news pl-1">
+              <div className="title-rank-news">
                 {this.props.rankedNewsObj.title}
               </div>
               <p
