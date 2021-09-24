@@ -82,40 +82,40 @@ export default class AboutUs extends Component {
                 <div className="team-member p-3 d-flex align-items-center">
                   <img src="https://i.gadgets360cdn.com/large/loki_tom_hiddleston_crop_1622797154582.jpg?downsize=950:*" alt="" />
                   <div className="member-data ml-3">
-                    <h5><b>Team PAKTEKI <br/>Hamza S</b></h5>
-                    <h6>IT architect</h6>
+                    <h5><b>Team PAKTEKI <br/>M Ahmad</b></h5>
+                    <h6>Frontend Lead</h6>
                   </div>
                 </div>
                 <div className="team-member p-3 d-flex align-items-center">
                   <img src="https://i.gadgets360cdn.com/large/loki_tom_hiddleston_crop_1622797154582.jpg?downsize=950:*" alt="" />
                   <div className="member-data ml-3">
-                    <h5><b>Team PAKTEKI <br/>Hamza S</b></h5>
-                    <h6>IT architect</h6>
+                    <h5><b>Team PAKTEKI <br/>Ali Y</b></h5>
+                    <h6>Frontend Developer</h6>
                   </div>
                 </div>
                 <div className="team-member p-3 d-flex align-items-center">
                   <img src="https://i.gadgets360cdn.com/large/loki_tom_hiddleston_crop_1622797154582.jpg?downsize=950:*" alt="" />
                   <div className="member-data ml-3">
-                    <h5><b>Team PAKTEKI <br/>Hamza S</b></h5>
-                    <h6>IT architect</h6>
+                    <h5><b>Team PAKTEKI <br/>Ali T</b></h5>
+                    <h6>Backend Developer</h6>
+                  </div>
+                </div><div className="team-member p-3 d-flex align-items-center">
+                  <img src="https://i.gadgets360cdn.com/large/loki_tom_hiddleston_crop_1622797154582.jpg?downsize=950:*" alt="" />
+                  <div className="member-data ml-3">
+                    <h5><b>Team PAKTEKI <br/>Mujtaba T</b></h5>
+                    <h6>Business executive</h6>
+                  </div>
+                </div><div className="team-member p-3 d-flex align-items-center">
+                  <img src="https://i.gadgets360cdn.com/large/loki_tom_hiddleston_crop_1622797154582.jpg?downsize=950:*" alt="" />
+                  <div className="member-data ml-3">
+                    <h5><b>Team PAKTEKI <br/>Souga N</b></h5>
+                    <h6>Cheif Producer</h6>
                   </div>
                 </div><div className="team-member p-3 d-flex align-items-center">
                   <img src="https://i.gadgets360cdn.com/large/loki_tom_hiddleston_crop_1622797154582.jpg?downsize=950:*" alt="" />
                   <div className="member-data ml-3">
                     <h5><b>Team PAKTEKI <br/>Hamza S</b></h5>
-                    <h6>IT architect</h6>
-                  </div>
-                </div><div className="team-member p-3 d-flex align-items-center">
-                  <img src="https://i.gadgets360cdn.com/large/loki_tom_hiddleston_crop_1622797154582.jpg?downsize=950:*" alt="" />
-                  <div className="member-data ml-3">
-                    <h5><b>Team PAKTEKI <br/>Hamza S</b></h5>
-                    <h6>IT architect</h6>
-                  </div>
-                </div><div className="team-member p-3 d-flex align-items-center">
-                  <img src="https://i.gadgets360cdn.com/large/loki_tom_hiddleston_crop_1622797154582.jpg?downsize=950:*" alt="" />
-                  <div className="member-data ml-3">
-                    <h5><b>Team PAKTEKI <br/>Hamza S</b></h5>
-                    <h6>IT architect</h6>
+                    <h6>Senior Developer</h6>
                   </div>
                 </div>
             </div>
