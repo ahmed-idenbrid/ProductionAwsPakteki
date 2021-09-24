@@ -36,7 +36,7 @@ class City42NewsLive extends React.Component {
             width="100%"
             controls
             loop="true"
-            url="https://www.youtube.com/watch?v=RP7D86oQE6Y"
+            url="https://www.youtube.com/watch?v=upXUSMCYKVk"
           />
 
           {/* news start single */}

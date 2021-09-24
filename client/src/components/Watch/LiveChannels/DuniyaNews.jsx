@@ -36,7 +36,7 @@ class DuniyaNewsLive extends React.Component {
             width="100%"
             controls
             loop="true"
-            url="https://www.youtube.com/watch?v=XfgjUcwGNII"
+            url="https://www.youtube.com/watch?v=gDeFTeRm8Yg"
           />
 
           {/* news start single */}
