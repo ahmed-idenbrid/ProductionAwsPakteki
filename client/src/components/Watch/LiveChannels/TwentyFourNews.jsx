@@ -36,7 +36,7 @@ class TwentyFourNewsLive extends React.Component {
             width="100%"
             controls
             loop="true"
-            url="https://www.youtube.com/watch?v=w1lYDNTE-H4"
+            url="https://www.youtube.com/watch?v=DkqVMeuITAY"
           />
 
           {/* news start single */}

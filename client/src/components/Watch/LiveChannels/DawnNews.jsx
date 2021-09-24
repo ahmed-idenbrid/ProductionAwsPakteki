@@ -36,7 +36,7 @@ class ExpressNewsLive extends React.Component {
             width="100%"
             controls
             loop="true"
-            url="https://www.youtube.com/watch?v=Q8noIHrO5mg"
+            url="https://www.youtube.com/watch?v=_3w2v2zDGfQ"
           />
 
           {/* news start single */}

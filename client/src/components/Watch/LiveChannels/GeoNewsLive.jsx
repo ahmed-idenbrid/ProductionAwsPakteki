@@ -36,7 +36,7 @@ class GeoNewsLive extends React.Component {
             width="100%"
             controls
             loop="true"
-            url="https://www.youtube.com/watch?v=G8NJfQS4hlo"
+            url="https://www.youtube.com/watch?v=HrrpR7zjFpU"
           />
 
           {/* news start single */}
