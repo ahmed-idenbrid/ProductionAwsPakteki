@@ -54,9 +54,7 @@ const bigNewsComponent = ({ newsObj }) => {
             new Date(newsObj.date).setHours(
               new Date(newsObj.date).getHours() + 3
             ) ? (
-              <label className="new-news mb-0 ml-2 font-weight-bold small-icons-text-new">
-                NEW
-              </label>
+              <span className="newNewsLabel"></span>
             ) : null}
           </Card.Title>
           <Card.Title className="m-0 p-0 news-channel" style={{ fontSize: "12px" }}>

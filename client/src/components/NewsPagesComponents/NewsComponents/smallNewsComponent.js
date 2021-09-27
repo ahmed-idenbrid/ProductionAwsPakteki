@@ -64,7 +64,7 @@ const smallNewsComponent = ({ newsObj }) => {
                 new Date(newsObj.date).setHours(
                   new Date(newsObj.date).getHours() + 3
                 ) ? (
-                  <span className="new-news-label px-2">NEW</span>
+                  <span className="newNewsLabel"></span>
                 ) : null}
               </li>
             </ul>
