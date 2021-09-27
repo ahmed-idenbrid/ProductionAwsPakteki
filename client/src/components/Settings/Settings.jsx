@@ -88,12 +88,8 @@ export default class settings extends Component {
     return (
       <React.Fragment>
         <NavBar history={this.props.history} />
-        <div
-          style={{ paddingBottom: "60px" }}
-          className="bg-white min-h-100 d-flex flex-column align-items-center justify-content-center mb-5"
-        >
+        <div className="SettingContainer">
           {/* <img src={logo} className="col-6 col-md-3" alt="logo img" /> */}
-
           {this.state.mounted ? (
             <div className="user-upload">
               <div className="user-edit">
