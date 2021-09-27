@@ -50,6 +50,7 @@
   align-items: center;
   justify-content: center;
   padding-bottom: 60px;
+  min-height: 90vh;
 }
 
 .user-upload .user-preview {
