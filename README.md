@@ -10,7 +10,7 @@ Pakteki is an inhouse project of idenbrid inc. Via this product of idenbrid user
 
 ## Project Preview.
 
-- (Frontend)[https://pakteki.com/].
+- (Frontend)[http://3.142.50.232:5000/news/all/].
 - (Backend)[http://3.142.50.232:5000/api/news/all/].
 
 ## Tools/Technologies.
