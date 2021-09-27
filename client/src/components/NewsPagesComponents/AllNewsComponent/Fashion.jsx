@@ -10,22 +10,23 @@ class FashionNews extends Component {
   state = {
     NewsData: [],
     mounted: false,
-    chunkIndex: 0,
+    page: 1,
+    limit: 20
   };
 
   componentDidMount() {
-    this.getData(this.state.chunkIndex);
+    this.getData(this.state.page,this.state.limit);
   }
-  getData = (chunkIndex) => {
+  getData = (page,limit) => {
     axios
-      .get(`${BaseURL}/news/all/getCategoryNews/${chunkIndex}`, {
+      .get(`${BaseURL}/news/all/getCategoryNews/?page=${page}&limit=${limit}`, {
         headers: {
           newsCategoryName: "Fashion",
         },
       })
       .then(async (res) => {
-        if (res.data.success && res.data.chunkData) {
-          const map = await res.data.chunkData.map((chunk) => {
+        if (res.data.success && res.data.newsData) {
+          const map = await res.data.newsData.map((chunk) => {
             return this.state.NewsData.push(chunk);
           });
           this.setState({
@@ -104,10 +105,11 @@ class FashionNews extends Component {
             if (inView) {
               this.setState(
                 {
-                  chunkIndex: this.state.chunkIndex + 1,
+                  page: this.state.page + 1,
+                  limit: this.state.limit + 20,
                 },
                 () => {
-                  this.getData(this.state.chunkIndex);
+                  this.getData(this.state.page, this.state.limit);
                 }
               );
             }

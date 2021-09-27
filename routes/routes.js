@@ -1,12 +1,6 @@
 const router = require("express").Router();
 const AllNewsModal = require("../models/NewsModels/AllNewsModal");
 const UserFeedbackModal = require("../models/UserFeedbackModal");
-const fileSystem = require("fs");
-const Collect = require("@supercharge/collections");
-const {
-  CreateFileAndSendData,
-  ReadExistingFileAndSendData,
-} = require("../utils/sendNewsData");
 
 // submit all news in mongodb
 router.post("/news/all", async (req, res) => {
@@ -304,45 +298,35 @@ router.post("/news/all", async (req, res) => {
 //   }
 // });
 
-router.get("/news/all", async (req, res) => {
+router.get("/allNews", async (req, res) => {
   try {
     const GetAllNewsData = await AllNewsModal.find();
-    res.send({ Success: true, newsData: GetAllNewsData });
+    res.send({
+      Success: true,
+      newsData: GetAllNewsData
+    });
   } catch (error) {
-    res.send({ error: error.message });
+    res.send({
+      error: error.message
+    });
   }
 });
 
 // get all news from mongodb
-router.get("/news/all/:chunkIndex", async (req, res) => {
+router.get("/news/all", async (req, res) => {
   try {
-    const GetAllNewsData = await AllNewsModal.find();
-
+    const {
+      page,
+      limit
+    } = req.query
+    const GetAllNewsData = await AllNewsModal.find().limit(limit * 1).skip((page - 1) * limit);
     const sortedNewsByDate = await GetAllNewsData.sort(function (a, b) {
       return new Date(b.date) - new Date(a.date);
     });
-    const chunkedNewsData = await Collect(sortedNewsByDate).chunk(20).all();
-
-    fileSystem.readFile(
-      "./dataCollectionFiles/allNewsData.json",
-      function (err, data) {
-        if (data.length == 0) {
-          CreateFileAndSendData(chunkedNewsData, req.params.chunkIndex, res);
-        }
-      }
-    );
-    if(fileSystem.existsSync("./dataCollectionFiles/allNewsData.json") &&
-      JSON.parse(fileSystem.readFileSync("./dataCollectionFiles/allNewsData.json")).length * 20 < GetAllNewsData.length) {
-      console.log("fetching new data");
-      CreateFileAndSendData(chunkedNewsData, req.params.chunkIndex, res);
-    } else if(fileSystem.existsSync("./dataCollectionFiles/allNewsData.json")) {
-      console.log("sending existing data");
-      ReadExistingFileAndSendData(req.params.chunkIndex, res);
-    } else {
-      
-      console.log("creating file and sending data");
-      CreateFileAndSendData(chunkedNewsData, req.params.chunkIndex, res);
-    }
+    res.send({
+      success: true,
+      newsData: sortedNewsByDate
+    });
   } catch (error) {
     res.send({
       message: error.message,
@@ -350,28 +334,23 @@ router.get("/news/all/:chunkIndex", async (req, res) => {
   }
 });
 
-router.get("/news/all/getCategoryNews/:chunkIndex", async (req, res) => {
+router.get("/news/all/getCategoryNews", async (req, res) => {
   try {
-    if (fileSystem.existsSync("./dataCollectionFiles/allNewsData.json")) {
-      const data = fileSystem.readFileSync(
-        "./dataCollectionFiles/allNewsData.json"
-      );
-      const header = req.header("newsCategoryName");
-      const myObj = JSON.parse(data);
-      const chunkData = myObj[req.params.chunkIndex].filter((obj) => {
-        return obj.category === header;
-      });
-      if (chunkData === undefined) {
-        res.send({
-          Message: "No Data Found",
-        });
-      } else {
-        res.send({
-          success: true,
-          chunkData,
-        });
-      }
-    }
+    const {
+      page,
+      limit
+    } = req.query
+    const header = req.header("newsCategoryName");
+    const GetCategoryNewsData = await AllNewsModal.find({
+      category: header  
+    }).limit(limit * 1).skip((page - 1) * limit);
+    const sortedNewsByDate = await GetCategoryNewsData.sort(function (a, b) {
+      return new Date(b.date) - new Date(a.date);
+    });
+    res.send({
+      success: true,
+      newsData: sortedNewsByDate
+    });
   } catch (err) {
     res.send({
       Message: err.message,
@@ -382,17 +361,14 @@ router.get("/news/all/getCategoryNews/:chunkIndex", async (req, res) => {
 router.post("/newsLiked", async (req, res) => {
   try {
     const newsData = await AllNewsModal.findById(req.body.newsId);
-    await AllNewsModal.updateOne(
-      {
-        _id: req.body.newsId,
+    await AllNewsModal.updateOne({
+      _id: req.body.newsId,
+    }, {
+      $push: {
+        likes: req.body,
       },
-      {
-        $push: {
-          likes: req.body,
-        },
-        no_of_likes: newsData.no_of_likes + 1,
-      }
-    );
+      no_of_likes: newsData.no_of_likes + 1,
+    });
     res.send({
       success: true,
     });
@@ -413,15 +389,12 @@ router.post("/newsUnLiked", async (req, res) => {
     if (index > -1) {
       newsLikesData.splice(index, 1);
     }
-    await AllNewsModal.updateOne(
-      {
-        _id: req.body.newsId,
-      },
-      {
-        likes: newsLikesData,
-        no_of_likes: newsData.no_of_likes - 1,
-      }
-    );
+    await AllNewsModal.updateOne({
+      _id: req.body.newsId,
+    }, {
+      likes: newsLikesData,
+      no_of_likes: newsData.no_of_likes - 1,
+    });
     res.send({
       success: true,
     });
@@ -435,23 +408,20 @@ router.post("/newsUnLiked", async (req, res) => {
 router.post("/newsComment", async (req, res) => {
   try {
     const newsData = await AllNewsModal.findById(req.body.newsId);
-    await AllNewsModal.updateOne(
-      {
-        _id: req.body.newsId,
-      },
-      {
-        $push: {
-          comments: {
-            newsId: req.body.newsId,
-            userId: req.body.userId,
-            username: req.body.username,
-            comment: req.body.comment,
-            commentNo: newsData.no_of_comments + 1,
-          },
+    await AllNewsModal.updateOne({
+      _id: req.body.newsId,
+    }, {
+      $push: {
+        comments: {
+          newsId: req.body.newsId,
+          userId: req.body.userId,
+          username: req.body.username,
+          comment: req.body.comment,
+          commentNo: newsData.no_of_comments + 1,
         },
-        no_of_comments: newsData.no_of_comments + 1,
-      }
-    );
+      },
+      no_of_comments: newsData.no_of_comments + 1,
+    });
     res.send({
       success: true,
     });
@@ -534,22 +504,17 @@ router.post("/news/increaseViews", async (req, res) => {
   try {
     const newsData = await AllNewsModal.findById(req.body.newsId);
     await AllNewsModal.findByIdAndUpdate(
-      req.body.newsId,
-      {
+      req.body.newsId, {
         $push: {
           registered_views: {
             newsId: req.body.newsId,
             userId: req.body.userId === "" ? "" : req.body.userId,
           },
         },
-        no_of_registered_views:
-          req.body.userId === ""
-            ? newsData.no_of_registered_views
-            : newsData.no_of_registered_views + 1,
-        no_of_nonregistered_views:
-          req.body.userId === ""
-            ? newsData.no_of_nonregistered_views + 1
-            : newsData.no_of_nonregistered_views,
+        no_of_registered_views: req.body.userId === "" ?
+          newsData.no_of_registered_views : newsData.no_of_registered_views + 1,
+        no_of_nonregistered_views: req.body.userId === "" ?
+          newsData.no_of_nonregistered_views + 1 : newsData.no_of_nonregistered_views,
       },
       function (err) {
         if (err) {
@@ -774,16 +739,13 @@ router.post("/news/all/delete", async (req, res) => {
 // patch single new news from mongon db end
 router.patch("/news/all/:newsid", async (req, res) => {
   try {
-    const RemoveSingleNews = await AllNewsModal.updateOne(
-      {
-        _id: req.params.newsid,
+    const RemoveSingleNews = await AllNewsModal.updateOne({
+      _id: req.params.newsid,
+    }, {
+      $set: {
+        title: req.body.title,
       },
-      {
-        $set: {
-          title: req.body.title,
-        },
-      }
-    );
+    });
     res.json(RemoveSingleNews);
   } catch (error) {
     res.json({

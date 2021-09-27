@@ -11,26 +11,25 @@ import { InView } from "react-intersection-observer";
 class AllNewsCategories extends Component {
   state = {
     AllNewsData: [],
-    chunkIndex: 0,
     mounted: false,
     redirect: false,
+    limit: 20,
+    page: 1
   };
 
   async componentDidMount() {
-    await this.getData(this.state.chunkIndex);
+    await this.getData(this.state.page, this.state.limit);
   }
-  getData = async (chunkIndex) => {
-    await axios.get(`${BaseURL}/news/all/${chunkIndex}`).then(async (res) => {
-      if (res.data.success && res.data.chunkData) {
-        const map = await res.data.chunkData.map((obj) => {
-          return this.state.AllNewsData.push(obj);
-        });
+  getData = async (page, limit) => {
+    await axios.get(`${BaseURL}/news/all/?page=${page}&limit=${limit}`).then((res) => {
+      if (res.data.success && res.data.newsData) {
+        let allnewsData = res.data.newsData.map((obj) => {
+          return this.state.AllNewsData.push(obj)
+        })
         this.setState({
-          AllNewsData: [...this.state.AllNewsData, map],
           mounted: true,
-        });
-      }
-      if (res.data.message) {
+          AllNewsData: [...this.state.AllNewsData, allnewsData]
+        })
       }
     });
   };
@@ -130,7 +129,8 @@ class AllNewsCategories extends Component {
             );
           })
         )}
-        <InView
+
+        {this.state.mounted ? <InView
           as="div"
           className="LoadingNewsSpinner"
           rootMargin="0px 0px 58px 0px"
@@ -138,10 +138,11 @@ class AllNewsCategories extends Component {
             if (inView) {
               this.setState(
                 {
-                  chunkIndex: this.state.chunkIndex + 1,
+                  page: this.state.page + 1,
+                  limit: this.state.limit + 20,
                 },
                 () => {
-                  this.getData(this.state.chunkIndex);
+                  this.getData(this.state.page, this.state.limit);
                 }
               );
             }
@@ -151,7 +152,7 @@ class AllNewsCategories extends Component {
           <div className="spinnerLoadingNews">
             <Spinner animation="border" />
           </div>
-        </InView>
+        </InView> : null}
 
         {this.state.redirect ? (
           <div
