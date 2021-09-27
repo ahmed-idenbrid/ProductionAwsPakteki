@@ -311,7 +311,24 @@ router.get("/allNews", async (req, res) => {
     });
   }
 });
-
+// router.get("/news/channelNews/:channelName", async (req, res) => {
+//   try {
+//     const GetAllNewsData = await (await AllNewsModal.find()).filter(()=>{
+//       return res.Success
+//     });
+//     // const sortedGetAllNewsData = await GetAllNewsData.filter(function (a, b) {
+//     //   return res
+//     // });
+//     res.send({
+//       Success: true,
+//       newsData: GetAllNewsData
+//     });
+//   } catch (error) {
+//     res.send({
+//       error: error.message
+//     });
+//   }
+// });
 // get all news from mongodb
 router.get("/news/all", async (req, res) => {
   try {

@@ -43,7 +43,6 @@ if (process.env.NODE_ENV === "PRODUCTION") {
     res.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
   });
 }
-
 mongoose
   .connect(process.env.DB_CONNECTION, {
     useNewUrlParser: true,

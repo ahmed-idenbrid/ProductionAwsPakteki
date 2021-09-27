@@ -51,37 +51,37 @@ export default class Categories extends Component {
           weatherCityName: response.data["name"],
         });
       });
-      new Swiper('.swiper-container', {
-        slidesPerView: 'auto',
-        speed:1000,
-        grabCursor: true,
-        loop: true,
-        autoplay: {
-            delay: 1,
-            disableOnInteraction: false,
+    new Swiper('.swiper-container', {
+      slidesPerView: 'auto',
+      speed: 1000,
+      grabCursor: true,
+      loop: true,
+      autoplay: {
+        delay: 1,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      breakpoints: {
+        0: {
+          slidesPerView: 7,
+          spaceBetween: 0,
         },
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
+        600: {
+          slidesPerView: 7,
+          spaceBetween: 20,
         },
-        breakpoints: {
-            0: {
-                slidesPerView: 7,
-                spaceBetween: 0,
-            },
-            600: {
-                slidesPerView: 7,
-                spaceBetween: 20,
-            },
-            768: {
-                slidesPerView: 10,
-                spaceBetween: 40,
-            },
-            1024: {
-                slidesPerView: 10,
-                spaceBetween: 50,
-            },
-        }
+        768: {
+          slidesPerView: 10,
+          spaceBetween: 40,
+        },
+        1024: {
+          slidesPerView: 10,
+          spaceBetween: 50,
+        },
+      }
     });
 
     navigator.geolocation.getCurrentPosition((position) => {
@@ -186,7 +186,7 @@ export default class Categories extends Component {
                             <a href='https://bizblanca.com/' rel="noopener noreferrer" target="_blank"><img className='categories-icons' src={BizblancaLogo} alt="" /></a>
                         </li> */}
             <li className='swiper-slide'>
-              <Link to="/news/channelNews/Geo">
+              <Link to="/news/channelNews/GEO">
                 <img className="categories-icons" src={geoNews} alt="GeoTV" />
               </Link>
             </li>

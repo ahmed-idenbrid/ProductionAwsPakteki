@@ -14,10 +14,8 @@ export default class ChannelNews extends Component {
     userId: "",
   };
   componentDidMount() {
-    if (localStorage.getItem("allNewsData")) {
-      const channelNews = JSON.parse(
-        localStorage.getItem("allNewsData")
-      ).filter((obj) => {
+    axios.get(`${BaseURL}/news/all`).then((res) => {
+      const channelNews = res.data.newsData.filter((obj) => {
         return obj.channel === this.props.routerParams.match.params.channelName;
       });
       this.setState(
@@ -30,7 +28,8 @@ export default class ChannelNews extends Component {
           });
         }
       );
-    }
+    });
+
     const config = {
       headers: {
         "auth-token": localStorage.getItem("token"),
