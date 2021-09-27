@@ -25,6 +25,7 @@ Pakteki is an inhouse project of idenbrid inc. Via this product of idenbrid user
 * Python Web Scrapping.
 * React Bootstrap.
 * Heroku.
+* AWS (Instance,EC2)
 * Git & Github.
 
 ## Developers Working on this.
