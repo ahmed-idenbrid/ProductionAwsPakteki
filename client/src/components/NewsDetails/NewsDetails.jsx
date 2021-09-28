@@ -261,9 +261,9 @@ export default class NewsDetails extends Component {
                 </a>
                 <a
                   href="#/"
-                  className="d-flex flex-column align-items-center  mx-1"
+                  className="d-flex flex-column align-items-center mx-1"
                 >
-                  <img src={facebook} alt="" className="socialShareIcons" />
+                  <img src={facebook} alt="icon" className="socialShareIcons" />
                 </a>
                 <a href="#/" className="d-flex flex-column align-items-center ">
                   <img
@@ -309,7 +309,7 @@ export default class NewsDetails extends Component {
                   </p>
                 ) : (
                   // Special property wasn't working in anywhere except inline-CSS for limiting lines
-                  <div className="line-clamp-5 px-2" style={{WebkitBoxOrient: 'vertical'}}> 
+                  <div className="line-clamp-5 px-1" style={{WebkitBoxOrient: 'vertical'}}> 
                     {this.state.singleNews.description}
                   </div>
                 )}
@@ -491,7 +491,7 @@ export default class NewsDetails extends Component {
                     );
                   })}
             </div>
-            <div className="col-12 px-2 my-2">
+            <div className="col-12 p-0 pr-2 my-2">
               <div className="commnet-input">
                 <form
                   onSubmit={(e) => {
@@ -566,8 +566,7 @@ export default class NewsDetails extends Component {
                               toast.warn("Error Occurred");
                             }
                           });
-                      }}
-                    >
+                      }}>
                       <SmallNewsComponent newsObj={obj} />
                     </article>
                   );
