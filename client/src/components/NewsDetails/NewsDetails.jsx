@@ -65,7 +65,7 @@ export default class NewsDetails extends Component {
       },
     };
     await axios
-      .get("http://localhost:5000/auth/user", config)
+      .get("http://3.142.50.232:5000/api/auth/user", config)
       .then((res) => {
         if (res.data.Message) {
           localStorage.removeItem("token");
@@ -497,16 +497,13 @@ export default class NewsDetails extends Component {
                   onSubmit={(e) => {
                     e.preventDefault();
                     if (this.state.userData._id === undefined) {
-                      if (
-                        window.confirm("Do You Want To continue without login")
-                      ) {
+                      if (window.confirm("Do You Want To continue without login")){
                         this.postNewsComment();
                       }
                     } else {
                       this.postNewsComment();
                     }
-                  }}
-                >
+                  }}>
                   <input
                     type="text"
                     id="input-comment"
