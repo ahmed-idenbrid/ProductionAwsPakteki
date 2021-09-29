@@ -129,6 +129,7 @@ export default class NewsDetails extends Component {
     await axios
       .get(`${BaseURL}/news/single/${newsId}`)
       .then(async (response) => {
+        console.log(response);
         if (await response.data.success) {
           this.setState(
             {
@@ -190,7 +191,7 @@ export default class NewsDetails extends Component {
               data-target="#shareModal"
               className="share-icon mr-0"
               src={share}
-              alt=""
+              alt="icon"
             />
             <div className="bannerNewsChannel">
               {/* {this.state.singleNews.channel
