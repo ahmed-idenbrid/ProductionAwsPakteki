@@ -42,9 +42,9 @@ class AryNewsLive extends React.Component {
           {/* news start single */}
           <div className="col-12 p-0 my-1">
             <div className="my-page-content px-2 d-flex">
-              <Link to="">
+              <a href="https://www.youtube.com/watch?v=38IEolI8f-w" rel="no-refer nopener">
               <img height={"100px"} src={arylogo} alt="" />
-              </Link>
+              </a>
               <div className="my-page-content-text ml-2 w-100 d-flex flex-column justify-content-between">
                 <div className="font-size-13 four-line">
                   <b>Pakistan News Live</b> <br />
