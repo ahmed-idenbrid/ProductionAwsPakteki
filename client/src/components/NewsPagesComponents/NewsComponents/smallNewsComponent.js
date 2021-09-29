@@ -38,8 +38,7 @@ const smallNewsComponent = ({ newsObj }) => {
         <figure className="Image">
           <div
             className="smallArticleImage"
-            style={{ backgroundImage: `url(${newsObj.image})` }}
-          ></div>
+            style={{ backgroundImage: `url(${newsObj.image})`}}></div>
         </figure>
         <div className="newsContent">
           <h1 className="small-news-title" style={{WebkitBoxOrient:'vertical'}}>{newsObj.title}</h1>

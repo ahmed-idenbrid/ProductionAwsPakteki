@@ -15,7 +15,6 @@ const authRouter = require("./routes/authRoutes");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
-// app.use(corsOpts());
 // const corsOpts = {
 //   origin: '*',
 //   methods: [
@@ -26,6 +25,8 @@ app.use(cors());
 //     'Content-Type',
 //   ],
 // };
+// app.use(cors(corsOpts))
+
 
 // app.use(cors(corsOpts));
 app.use("/api", routes);

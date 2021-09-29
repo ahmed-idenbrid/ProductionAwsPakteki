@@ -25,7 +25,7 @@ export default class Login extends Component {
       })
       .then((res) => {
         if (res.data.Message === "Success") {
-          toast.success("Login Successful");
+          // toast.success("Login Successful");
           localStorage.setItem("token", res.data.token);
           localStorage.setItem("userData", JSON.stringify(res.data.userData));
           this.props.history.push("/news/all");

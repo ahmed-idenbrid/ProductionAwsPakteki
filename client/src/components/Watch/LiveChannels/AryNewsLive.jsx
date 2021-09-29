@@ -3,7 +3,7 @@ import ReactPlayer from "react-player/lazy";
 import arylogo from "../channel_logo/ary_news.svg";
 import NavBar from "../../NavBar/Navbar";
 import FootBar from "../../FootBar/FootBar";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 class AryNewsLive extends React.Component {
   constructor(props) {
     super(props);

@@ -39,38 +39,32 @@ class AllNewsCategories extends Component {
         {this.state.AllNewsData.length === 0 && this.state.mounted ? (
           <div
             style={{ height: "78vh", width: "100%" }}
-            className="d-flex align-items-center justify-content-center bg-white"
-          >
+            className="d-flex align-items-center justify-content-center bg-white">
             <h1>No News To Show</h1>
           </div>
         ) : null}
         {this.state.mounted === false ? (
           <div
             style={{ height: "50vh", width: "100%", marginBottom: "100px" }}
-            className="d-flex align-items-center justify-content-center"
-          >
+            className="d-flex align-items-center justify-content-center">
             <Spinner animation="border" />
           </div>
         ) : (
           this.state.AllNewsData.map((obj, index) => {
             return (
               <Fragment key={index}>
-                {obj instanceof Array ? null : index === 0 ||
-                  index % 7 === 0 ? (
-                  <div
-                    onClick={() => {
+                {obj instanceof Array ? null : index === 0 || index % 7 === 0 ? (
+                  <div onClick={() => {
                       this.setState({
                         redirect: true,
                       });
-                      axios
-                        .post(BaseURL + "/news/increaseViews", {
+                      axios.post(BaseURL + "/news/increaseViews", {
                           newsId: obj._id,
                           userId:
                             this.props.userData._id === ""
                               ? ""
                               : this.props.userData._id,
-                        })
-                        .then((res) => {
+                        }).then((res) => {
                           if (res.data.success) {
                             this.setState(
                               {
@@ -78,16 +72,13 @@ class AllNewsCategories extends Component {
                               },
                               () => {
                                 this.props.routerParams.history.push(
-                                  `/news/single/${obj._id}`
-                                );
-                              }
-                            );
+                                  `/news/single/${obj._id}`);
+                              });
                           } else {
                             toast.warn("Error Occurred");
                           }
                         });
-                    }}
-                  >
+                    }}>
                     <BigNewsComponent newsObj={obj} />
                   </div>
                 ) : (
