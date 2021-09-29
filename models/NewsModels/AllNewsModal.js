@@ -14,7 +14,6 @@ const AllNewsSchema = mongoose.Schema({
   channel: String,
   image: {
     type: String,
-    required: true,
   },
   permalink: {
     type: String,
