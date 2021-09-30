@@ -17,6 +17,7 @@ class BusinessNews extends Component {
   componentDidMount() {
     this.getData(this.state.page, this.state.limit);
   }
+
   getData = (page, limit) => {
     axios
       .get(`${BaseURL}/news/all/getCategoryNews/?page=${page}&limit=${limit}`, {

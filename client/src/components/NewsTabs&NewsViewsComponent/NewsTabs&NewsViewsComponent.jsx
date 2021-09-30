@@ -202,8 +202,7 @@ class NewsTabs extends Component {
         </Tabs>
         <SwipeAbleViews
           index={this.state.index}
-          onChangeIndex={this.handleChangeIndex}
-        >
+          onChangeIndex={this.handleChangeIndex}>
           <Fragment>
             <div className="newsContainer">
               <div className="newsContainerWrap">

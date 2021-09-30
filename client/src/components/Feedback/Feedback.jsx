@@ -61,7 +61,7 @@ export default class Feedback extends Component {
                 required
               />
             </Form.Group>
-            <Button type="submit" className="w-100">
+            <Button type="submit" className="w-100 info">
               Submit
             </Button>
           </Form>
