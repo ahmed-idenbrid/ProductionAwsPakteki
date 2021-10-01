@@ -4,9 +4,10 @@
   padding: 4px 8px;
   -webkit-align-items: center;
   align-items: space-between;
-  padding: 4px 8px;
+  padding: 6px 8px;
   background-color: #fff;
   cursor: pointer;
+  border-bottom: 2px solid #eee;
 }
 
 .Image {
@@ -28,7 +29,7 @@
 
 .newsContent {
   margin: 0px 0px 0px 5px;
-  border-bottom: 2px solid #eee;
+  /* border-bottom: 2px solid #eee; */
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -46,10 +47,10 @@
   margin-top: -2px;
 }
 
-.newsDate {
-  font-size: 11px;
-  color: rgba(0, 0, 0, .43);
+.newsdate {
+  font-size: 12px;
   padding-right: 5px;
+  font-weight: 500;
 }
 
 .newsContent ul {
@@ -99,7 +100,7 @@
 
 .news-channel {
   font-weight: 500;
-  color: #698ac1;
+  color: #444;
 }
 
 .small-news-title {

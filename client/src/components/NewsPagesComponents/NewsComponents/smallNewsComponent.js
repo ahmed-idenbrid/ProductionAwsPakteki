@@ -43,9 +43,9 @@ const smallNewsComponent = ({ newsObj }) => {
         <div className="newsContent">
           <h1 className="small-news-title" style={{WebkitBoxOrient:'vertical'}}>{newsObj.title}</h1>
           <div className="dynamic-values">
-            <ul>
+            <ul className='m-0 p-0 news-channel card-title h5 '>
               <li>
-                <small className="newsDate">{newsObj.date}</small>
+                <small className="newsdate text-muted">{newsObj.date}</small>
               </li>
               <li className="comments-icon">
                 <FiMessageSquare />

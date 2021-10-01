@@ -38,13 +38,13 @@ export default class NewsRank extends React.Component {
                 {this.props.rankedNewsObj.title}
               </div>
               <p
-                className="pt-2 mb-1"
+                className="pt-4 mb-1"
                 style={{ fontSize: "13px", height: "23px" }}
               >
                 {this.props.rankedNewsObj.date}
               </p>
               <div className="comments-block">
-                <div className="comments-conuter">
+                <div className="comments-conuter pt-3">
                   <span className="mb-0 small-icons-text-comments">
                     <FiMessageSquare className="commentIcon" /> &nbsp;
                     {this.props.rankedNewsObj.no_of_comments}
