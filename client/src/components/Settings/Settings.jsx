@@ -239,7 +239,7 @@ export default class settings extends Component {
                       checked={this.state.gender === "male" ? true : false}
                       onChange={(e) => {
                         this.setState({ gender: e.target.value }, () => {
-                          console.log(this.state);
+                          // console.log(this.state);
                         });
                       }}
                     />
@@ -268,12 +268,11 @@ export default class settings extends Component {
                       Select City
                     </option>
                     <option value="Islamabad">Islamabad</option>
+                    <option value="Islamabad">Lahore</option>
                     <option value="" disabled>
                       Punjab Cities
                     </option>
-                    <option value="Ahmed Nager Chatha">
-                      Ahmed Nager Chatha
-                    </option>
+                    <option value="Ahmed Nager Chatha">Ahmed Nager Chatha</option>
                     <option value="Ahmadpur East">Ahmadpur East</option>
                     <option value="Ali Khan Abad">Ali Khan Abad</option>
                     <option value="Alipur">Alipur</option>
@@ -375,9 +374,7 @@ export default class settings extends Component {
                     <option value="Vehari">Vehari</option>
                     <option value="Wah Cantonment">Wah Cantonment</option>
                     <option value="Wazirabad">Wazirabad</option>
-                    <option value="" disabled>
-                      Sindh Cities
-                    </option>
+                    <option value="" disabled>Sindh Cities</option>
                     <option value="Badin">Badin</option>
                     <option value="Bhirkan">Bhirkan</option>
                     <option value="Rajo Khanani">Rajo Khanani</option>
@@ -430,15 +427,11 @@ export default class settings extends Component {
                     <option value="Tangwani">Tangwani</option>
                     <option value="Tando Adam Khan">Tando Adam Khan</option>
                     <option value="Tando Allahyar">Tando Allahyar</option>
-                    <option value="Tando Muhammad Khan">
-                      Tando Muhammad Khan
-                    </option>
+                    <option value="Tando Muhammad Khan">Tando Muhammad Khan</option>
                     <option value="Thatta">Thatta</option>
                     <option value="Umerkot">Umerkot</option>
                     <option value="Warah">Warah</option>
-                    <option value="" disabled>
-                      Khyber Cities
-                    </option>
+                    <option value="" disabled>Khyber Cities</option>
                     <option value="Abbottabad">Abbottabad</option>
                     <option value="Adezai">Adezai</option>
                     <option value="Alpuri">Alpuri</option>
@@ -485,9 +478,7 @@ export default class settings extends Component {
                     <option value="Thall">Thall</option>
                     <option value="Timergara">Timergara</option>
                     <option value="Tordher">Tordher</option>
-                    <option value="" disabled>
-                      Balochistan Cities
-                    </option>
+                    <option value="" disabled>Balochistan Cities</option>
                     <option value="Awaran">Awaran</option>
                     <option value="Barkhan">Barkhan</option>
                     <option value="Chagai">Chagai</option>
