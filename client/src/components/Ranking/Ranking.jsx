@@ -47,6 +47,7 @@ export default class Ranking extends Component {
   }
 
   render() {
+    console.log(this.state.AllRankingNews);
     return (
       <Fragment>
         <NavBar />

@@ -3,6 +3,7 @@ import "./static_pages_style.css";
 import FootBar from "../FootBar/FootBar";
 import NavBar from "../NavBar/Navbar";
 
+
 export default class PrivacyPolicy extends Component {
   render() {
     return (

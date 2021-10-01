@@ -58,15 +58,20 @@ export default class Login extends Component {
           <form onSubmit={this.handleSubmit} className="w-100">
             <div className="row m-0 w-100 justify-content-center">
               <div className="col-11 col-md-8 col-lg-6">
-                <div className="d-flex align-items-center flex-column">
-                  <Link to="/">
+                <div className="d-flex flex-column">
+                  <Link to="/" className='m-auto'>
                     <img
                       height={"73px"}
                       src={logo}
-                      className="mb-4"
+                      className="mb-4 m-auto"
                       alt="img not found"
                     />
                   </Link>
+                  <div>
+                    <div className='text-left mb-4 w-100'>
+                    Login with your credentials
+                    </div>
+                  </div>
                   <input
                     type="email"
                     placeholder="Email"
@@ -100,10 +105,10 @@ export default class Login extends Component {
                   </button>
                   <span className="py-2 pt-3">OR</span>
                   <div className="d-flex flex-column mt-2">
-                    <Link to="/forgotpassword" className="my-links">
+                    <Link to="/forgotpassword" className="my-links m-auto">
                       Forgot Your Password.?
                     </Link>
-                    <Link to="/register" className="my-links">
+                    <Link to="/register" className="my-links m-auto">
                       Create New Account..?
                     </Link>
                   </div>

@@ -17,7 +17,7 @@
   width: 100%;
 }
 .forgot-section{
-  min-height: 100vh;
+  min-height: 110vh;
   background-color: #fff;
   align-items: center;
 }
@@ -34,4 +34,8 @@
 .mb-13
 {
   margin-bottom: 13rem;
+}
+.m-auto
+{
+  margin: auto;
 }
