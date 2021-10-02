@@ -59,8 +59,7 @@ export default class Ranking extends Component {
           {this.state.AllRankingNews.length === 0 && this.state.mounted ? (
             <div
               style={{ height: "78vh", width: "100%" }}
-              className="d-flex align-items-center justify-content-center bg-white"
-            >
+              className="d-flex align-items-center justify-content-center bg-white">
               <h1>No News To Show</h1>
             </div>
           ) : null}
