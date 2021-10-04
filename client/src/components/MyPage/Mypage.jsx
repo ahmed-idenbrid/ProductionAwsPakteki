@@ -10,7 +10,7 @@ import { toast } from "react-toastify";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import NavBar from "../NavBar/Navbar";
-import {AiFillSetting} from 'react-icons/ai'
+import { AiFillSetting } from "react-icons/ai";
 
 export default class Mypage extends Component {
   state = {
@@ -20,12 +20,14 @@ export default class Mypage extends Component {
     allNewsData: [],
   };
 
-  componentDidMount() {
-    if (localStorage.getItem("allNewsData")) {
-      this.setState({
-        allNewsData: JSON.parse(localStorage.getItem("allNewsData")),
-      });
-    }
+  async componentDidMount() {
+    await axios.get(`${BaseURL}/news/all/?page=1&limit=20`).then((res) => {
+      if (res.data.success && res.data.newsData) {
+        this.setState({
+          allNewsData: res.data.newsData,
+        });
+      }
+    });
     if (localStorage.getItem("userData")) {
       this.setState(
         {
@@ -64,7 +66,7 @@ export default class Mypage extends Component {
               className="sidebar_banner w-100"
               alt="banner"
             />
-       
+
             <div className="row m-0 profile-section p-2">
               <div className="col-2 p-0">
                 <img
@@ -87,8 +89,8 @@ export default class Mypage extends Component {
               {/* <Link className="col-2 p-0 userSetting" to="/user/setting">
                 Setting
               </Link> */}
-              <a className="col-2 p-0 userSetting" href="/user/setting" >
-              <AiFillSetting />
+              <a className="col-2 p-0 userSetting" href="/user/setting">
+                <AiFillSetting />
               </a>
             </div>
           </div>
@@ -100,7 +102,7 @@ export default class Mypage extends Component {
               </TabList>
 
               <TabPanel style={{ paddingBottom: "60px" }}>
-                {this.state.allNewsData.slice(0, 20).map((obj, index) => {
+                {this.state.allNewsData.map((obj, index) => {
                   return (
                     <div
                       key={index}
@@ -110,9 +112,9 @@ export default class Mypage extends Component {
                           .post(BaseURL + "/news/increaseViews", {
                             newsId: obj._id,
                             userId:
-                              this.props.userData._id === ""
+                              this.state.userData._id === ""
                                 ? ""
-                                : this.props.userData._id,
+                                : this.state.userData._id,
                           })
                           .then((res) => {
                             if (res.data.success) {
@@ -153,9 +155,9 @@ export default class Mypage extends Component {
                               .post(BaseURL + "/news/increaseViews", {
                                 newsId: obj._id,
                                 userId:
-                                  this.props.userData._id === ""
+                                  this.state.userData._id === ""
                                     ? ""
-                                    : this.props.userData._id,
+                                    : this.state.userData._id,
                               })
                               .then((res) => {
                                 if (res.data.success) {

@@ -86,7 +86,13 @@ export default class App extends Component {
               component={TwentyFourNewsLive}
             />
             <Route exact path="/watch" component={Watch} />
-            <Route exact path="/mypage" component={MyPage} />
+            <Route
+              exact
+              path="/mypage"
+              component={(routerParams) => {
+                return <MyPage routerParams={routerParams} />;
+              }}
+            />
             <Route
               exact
               path="/news/single/:newsId"

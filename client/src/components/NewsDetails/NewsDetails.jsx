@@ -51,11 +51,11 @@ export default class NewsDetails extends Component {
   };
 
   async componentDidMount() {
-    await this.getNewsDataProp(this.props.routerParams.match.params.newsId);
-    await axios.get(`${BaseURL}/news/all/0`).then((res) => {
-      if (res.data.success && res.data.chunkData) {
+    await this.getSingleNewsData(this.props.routerParams.match.params.newsId);
+    await axios.get(`${BaseURL}/news/all/?page=1&limit=6`).then((res) => {
+      if (res.data.success && res.data.newsData) {
         this.setState({
-          categoryNews: res.data.chunkData,
+          categoryNews: res.data.newsData,
         });
       }
     });
@@ -97,7 +97,7 @@ export default class NewsDetails extends Component {
           })
           .then((response) => {
             if (response.data.success) {
-              this.getNewsDataProp();
+              this.getSingleNewsData();
             }
           });
       }
@@ -118,7 +118,7 @@ export default class NewsDetails extends Component {
           })
           .then((response) => {
             if (response.data.success) {
-              this.getNewsDataProp();
+              this.getSingleNewsData();
             }
           });
       }
@@ -129,7 +129,6 @@ export default class NewsDetails extends Component {
     await axios
       .get(`${BaseURL}/news/single/${newsId}`)
       .then(async (response) => {
-        console.log(response);
         if (await response.data.success) {
           this.setState(
             {
@@ -153,8 +152,6 @@ export default class NewsDetails extends Component {
       });
   }
 
-  getNewsDataProp=this.getSingleNewsData.bind(this)
-
   postNewsComment() {
     axios
       .post(BaseURL + "/newsComment", {
@@ -168,7 +165,7 @@ export default class NewsDetails extends Component {
       })
       .then((response) => {
         if (response.data.success) {
-          this.getNewsDataProp();
+          this.getSingleNewsData(this.props.routerParams.match.params.newsId);
           this.setState({
             comment: "",
           });
@@ -179,7 +176,7 @@ export default class NewsDetails extends Component {
     return (
       <Fragment>
         <NavBar routerParams={this.props.routerParams} />
-        
+
         <div className="news-details-container pb-2 pb-5 mb-5">
           <div
             className="banner"
@@ -197,56 +194,60 @@ export default class NewsDetails extends Component {
               {/* {this.state.singleNews.channel
                       ? this.state.singleNews.channel
                       : "News Channel"} */}
-              <a target="_blank" rel="noopener noreferrer" href={this.state.singleNews.permalink}>
-              <img
-                className="ChannelImage ml-2"
-                src={
-                  this.state.singleNews.channel === "Dawn"
-                    ? DawnNews
-                    : this.state.singleNews.channel === "city42"
-                    ? c42News
-                    : this.state.singleNews.channel === "GEO"
-                    ? geoNews
-                    : this.state.singleNews.channel === "Urdupoint"
-                    ? UrduPointNews
-                    : this.state.singleNews.channel === "Express"
-                    ? expressNews
-                    : this.state.singleNews.channel === "SAMAA"
-                    ? SamaNews
-                    : this.state.singleNews.channel === "NeoNetwork"
-                    ? NeoNews
-                    : this.state.singleNews.channel === "Bol"
-                    ? bolNews
-                    : this.state.singleNews.channel === "AbbTakk"
-                    ? AbTkNews
-                    : this.state.singleNews.channel === "92News"
-                    ? NintyTwoNews
-                    : this.state.singleNews.channel === "24NewsHD"
-                    ? duniyaNews
-                    : this.state.singleNews.channel === "Royalnews"
-                    ? royalNews
-                    : this.state.singleNews.channel === "Newsone"
-                    ? OnNews
-                    : this.state.singleNews.channel === "GNN"
-                    ? gnnNews
-                    : this.state.singleNews.channel === "Dunya"
-                    ? duniyaNews
-                    : this.state.singleNews.channel === "Dunya"
-                    ? MangoBaaz
-                    : this.state.singleNews.channel === "Dunya"
-                    ? SundayNews
-                    : this.state.singleNews.channel === "Dunya"
-                    ? UrduNews
-                    : this.state.singleNews.channel === "Dunya"
-                    ? ZaiqaTV
-                    : this.state.singleNews.channel === "Dunya"
-                    ? JhangNews
-                    : this.state.singleNews.channel === "Dunya"
-                    ? HelloPakistan
-                    : this.state.singleNews.channel
-                }
-                alt="channel"
-              />
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href={this.state.singleNews.permalink}
+              >
+                <img
+                  className="ChannelImage ml-2"
+                  src={
+                    this.state.singleNews.channel === "Dawn"
+                      ? DawnNews
+                      : this.state.singleNews.channel === "city42"
+                      ? c42News
+                      : this.state.singleNews.channel === "GEO"
+                      ? geoNews
+                      : this.state.singleNews.channel === "Urdupoint"
+                      ? UrduPointNews
+                      : this.state.singleNews.channel === "Express"
+                      ? expressNews
+                      : this.state.singleNews.channel === "SAMAA"
+                      ? SamaNews
+                      : this.state.singleNews.channel === "NeoNetwork"
+                      ? NeoNews
+                      : this.state.singleNews.channel === "Bol"
+                      ? bolNews
+                      : this.state.singleNews.channel === "AbbTakk"
+                      ? AbTkNews
+                      : this.state.singleNews.channel === "92News"
+                      ? NintyTwoNews
+                      : this.state.singleNews.channel === "24NewsHD"
+                      ? duniyaNews
+                      : this.state.singleNews.channel === "Royalnews"
+                      ? royalNews
+                      : this.state.singleNews.channel === "Newsone"
+                      ? OnNews
+                      : this.state.singleNews.channel === "GNN"
+                      ? gnnNews
+                      : this.state.singleNews.channel === "Dunya"
+                      ? duniyaNews
+                      : this.state.singleNews.channel === "Dunya"
+                      ? MangoBaaz
+                      : this.state.singleNews.channel === "Dunya"
+                      ? SundayNews
+                      : this.state.singleNews.channel === "Dunya"
+                      ? UrduNews
+                      : this.state.singleNews.channel === "Dunya"
+                      ? ZaiqaTV
+                      : this.state.singleNews.channel === "Dunya"
+                      ? JhangNews
+                      : this.state.singleNews.channel === "Dunya"
+                      ? HelloPakistan
+                      : this.state.singleNews.channel
+                  }
+                  alt="channel"
+                />
               </a>
             </div>
           </div>
@@ -294,7 +295,10 @@ export default class NewsDetails extends Component {
                   &nbsp;
                   {this.state.singleNews.no_of_comments}
                 </span>
-                <span className="mb-0 small-icons-text-comments px-1" style={{verticalAlign:"middle"}}>
+                <span
+                  className="mb-0 small-icons-text-comments px-1"
+                  style={{ verticalAlign: "middle" }}
+                >
                   <FaRegEye style={{ fontSize: "15px" }} /> &nbsp;
                   {this.state.singleNews.no_of_registered_views +
                     this.state.singleNews.no_of_nonregistered_views}
@@ -310,7 +314,10 @@ export default class NewsDetails extends Component {
                   </p>
                 ) : (
                   // Special property wasn't working in anywhere except inline-CSS for limiting lines
-                  <div className="line-clamp-5 px-1" style={{WebkitBoxOrient: 'vertical'}}> 
+                  <div
+                    className="line-clamp-5 px-1"
+                    style={{ WebkitBoxOrient: "vertical" }}
+                  >
                     {this.state.singleNews.description}
                   </div>
                 )}
@@ -326,7 +333,13 @@ export default class NewsDetails extends Component {
             </div>
           </div>
           <div className="readMoreSection">
-            <a target="_blank" rel="noopener noreferrer" href={this.state.singleNews.permalink} className="btn info" style={{ padding: "5px 42px" }}>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href={this.state.singleNews.permalink}
+              className="btn info"
+              style={{ padding: "5px 42px" }}
+            >
               Read More
             </a>
           </div>
@@ -352,7 +365,8 @@ export default class NewsDetails extends Component {
               } */}
               <label
                 htmlFor="input-comment"
-                style={{ cursor: "pointer", margin: "0px" }}>
+                style={{ cursor: "pointer", margin: "0px" }}
+              >
                 <VscComment /> Comment
               </label>
 
@@ -372,11 +386,14 @@ export default class NewsDetails extends Component {
                   tabIndex={-1}
                   role="dialog"
                   aria-labelledby="shareModalLabel"
-                  aria-hidden="true">
+                  aria-hidden="true"
+                >
                   <div className="modal-dialog" role="document">
                     <div className="modal-content col-12">
                       <div className="modal-header">
-                        <h5 className="modal-title">Lets share with your friends.</h5>{" "}
+                        <h5 className="modal-title">
+                          Lets share with your friends.
+                        </h5>{" "}
                         <button
                           type="button"
                           className="close"
@@ -439,9 +456,9 @@ export default class NewsDetails extends Component {
                   </div>
                 </div>
               </div>
-              
-              <b className='align-center-vertical'>
-              {this.state.singleNews.no_of_comments}
+
+              <b className="align-center-vertical">
+                {this.state.singleNews.no_of_comments}
               </b>
             </div>
             <div className="col-12 px-1 user-comments" id="bottom">
@@ -477,7 +494,10 @@ export default class NewsDetails extends Component {
                                     })
                                     .then((response) => {
                                       if (response.data.success) {
-                                        this.getNewsDataProp();
+                                        this.getSingleNewsData(
+                                          this.props.routerParams.match.params
+                                            .newsId
+                                        );
                                       }
                                     });
                                 }}
@@ -486,7 +506,7 @@ export default class NewsDetails extends Component {
                               </small>
                             ) : null}
                           </p>
-                          <small className='color-grey'> {obj.comment} </small>
+                          <small className="color-grey"> {obj.comment} </small>
                         </span>
                       </div>
                     );
@@ -498,13 +518,16 @@ export default class NewsDetails extends Component {
                   onSubmit={(e) => {
                     e.preventDefault();
                     if (this.state.userData._id === undefined) {
-                      if (window.confirm("Do You Want To continue without login")){
+                      if (
+                        window.confirm("Do You Want To continue without login")
+                      ) {
                         this.postNewsComment();
                       }
                     } else {
                       this.postNewsComment();
                     }
-                  }}>
+                  }}
+                >
                   <input
                     type="text"
                     id="input-comment"
@@ -532,7 +555,9 @@ export default class NewsDetails extends Component {
               <small className="heading-related-news">
                 Related News
                 <div className="description-container-common col-12 p-0 my-1">
-                  <p className="font-size-12 mb-0">Related to the news category you are checking</p>
+                  <p className="font-size-12 mb-0">
+                    Related to the news category you are checking
+                  </p>
                 </div>
               </small>
               {/* category section */}
@@ -540,7 +565,6 @@ export default class NewsDetails extends Component {
                 .filter((obj) => {
                   return obj.category === this.state.newsCategory;
                 })
-                .slice(0, 6)
                 .map((obj, index) => {
                   return (
                     <article
@@ -564,7 +588,8 @@ export default class NewsDetails extends Component {
                               toast.warn("Error Occurred");
                             }
                           });
-                      }}>
+                      }}
+                    >
                       <SmallNewsComponent newsObj={obj} />
                     </article>
                   );
@@ -588,7 +613,9 @@ export default class NewsDetails extends Component {
               <small className="heading-related-news">
                 Recommended News
                 <div className="description-container-common col-12 p-0 my-1">
-                  <p className="font-size-12 mb-0">Recommended news based on your user experience</p>
+                  <p className="font-size-12 mb-0">
+                    Recommended news based on your user experience
+                  </p>
                 </div>
               </small>
               {/* category section */}
@@ -596,7 +623,6 @@ export default class NewsDetails extends Component {
                 .filter((obj) => {
                   return obj.category === this.state.newsCategory;
                 })
-                .slice(0, 6)
                 .map((obj, index) => {
                   return (
                     <article

@@ -27,7 +27,6 @@ app.use(cors());
 // };
 // app.use(cors(corsOpts))
 
-
 // app.use(cors(corsOpts));
 app.use("/api", routes);
 app.use("/api/auth", authRouter);
@@ -54,8 +53,8 @@ mongoose
   .then(() => {
     console.log("db connected");
   });
- // var ip = process.env.IP;
-app.listen(PORT, () =>
+var ip = process.env.IP;
+app.listen(PORT, ip, () =>
   console.log(
     `server is running on port ${PORT} in ${process.env.NODE_ENV} Environment`
   )

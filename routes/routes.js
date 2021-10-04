@@ -303,14 +303,15 @@ router.get("/allNews", async (req, res) => {
     const GetAllNewsData = await AllNewsModal.find();
     res.send({
       Success: true,
-      newsData: GetAllNewsData
+      newsData: GetAllNewsData,
     });
   } catch (error) {
     res.send({
-      error: error.message
+      error: error.message,
     });
   }
 });
+
 // router.get("/news/channelNews/:channelName", async (req, res) => {
 //   try {
 //     const GetAllNewsData = await (await AllNewsModal.find()).filter(()=>{
@@ -332,17 +333,16 @@ router.get("/allNews", async (req, res) => {
 // get all news from mongodb
 router.get("/news/all", async (req, res) => {
   try {
-    const {
-      page,
-      limit
-    } = req.query
-    const GetAllNewsData = await AllNewsModal.find().limit(limit * 1).skip((page - 1) * limit);
+    const { page, limit } = req.query;
+    const GetAllNewsData = await AllNewsModal.find()
+      .limit(limit * 1)
+      .skip((page - 1) * limit);
     const sortedNewsByDate = await GetAllNewsData.sort(function (a, b) {
       return new Date(b.date) - new Date(a.date);
     });
     res.send({
       success: true,
-      newsData: sortedNewsByDate
+      newsData: sortedNewsByDate,
     });
   } catch (error) {
     res.send({
@@ -353,20 +353,19 @@ router.get("/news/all", async (req, res) => {
 
 router.get("/news/all/getCategoryNews", async (req, res) => {
   try {
-    const {
-      page,
-      limit
-    } = req.query
+    const { page, limit } = req.query;
     const header = req.header("newsCategoryName");
     const GetCategoryNewsData = await AllNewsModal.find({
-      category: header  
-    }).limit(limit * 1).skip((page - 1) * limit);
+      category: header,
+    })
+      .limit(limit * 1)
+      .skip((page - 1) * limit);
     const sortedNewsByDate = await GetCategoryNewsData.sort(function (a, b) {
       return new Date(b.date) - new Date(a.date);
     });
     res.send({
       success: true,
-      newsData: sortedNewsByDate
+      newsData: sortedNewsByDate,
     });
   } catch (err) {
     res.send({
@@ -378,14 +377,17 @@ router.get("/news/all/getCategoryNews", async (req, res) => {
 router.post("/newsLiked", async (req, res) => {
   try {
     const newsData = await AllNewsModal.findById(req.body.newsId);
-    await AllNewsModal.updateOne({
-      _id: req.body.newsId,
-    }, {
-      $push: {
-        likes: req.body,
+    await AllNewsModal.updateOne(
+      {
+        _id: req.body.newsId,
       },
-      no_of_likes: newsData.no_of_likes + 1,
-    });
+      {
+        $push: {
+          likes: req.body,
+        },
+        no_of_likes: newsData.no_of_likes + 1,
+      }
+    );
     res.send({
       success: true,
     });
@@ -406,12 +408,15 @@ router.post("/newsUnLiked", async (req, res) => {
     if (index > -1) {
       newsLikesData.splice(index, 1);
     }
-    await AllNewsModal.updateOne({
-      _id: req.body.newsId,
-    }, {
-      likes: newsLikesData,
-      no_of_likes: newsData.no_of_likes - 1,
-    });
+    await AllNewsModal.updateOne(
+      {
+        _id: req.body.newsId,
+      },
+      {
+        likes: newsLikesData,
+        no_of_likes: newsData.no_of_likes - 1,
+      }
+    );
     res.send({
       success: true,
     });
@@ -425,20 +430,23 @@ router.post("/newsUnLiked", async (req, res) => {
 router.post("/newsComment", async (req, res) => {
   try {
     const newsData = await AllNewsModal.findById(req.body.newsId);
-    await AllNewsModal.updateOne({
-      _id: req.body.newsId,
-    }, {
-      $push: {
-        comments: {
-          newsId: req.body.newsId,
-          userId: req.body.userId,
-          username: req.body.username,
-          comment: req.body.comment,
-          commentNo: newsData.no_of_comments + 1,
-        },
+    await AllNewsModal.updateOne(
+      {
+        _id: req.body.newsId,
       },
-      no_of_comments: newsData.no_of_comments + 1,
-    });
+      {
+        $push: {
+          comments: {
+            newsId: req.body.newsId,
+            userId: req.body.userId,
+            username: req.body.username,
+            comment: req.body.comment,
+            commentNo: newsData.no_of_comments + 1,
+          },
+        },
+        no_of_comments: newsData.no_of_comments + 1,
+      }
+    );
     res.send({
       success: true,
     });
@@ -478,10 +486,12 @@ router.get("/news/rankedNews", async (req, res) => {
       return (
         b.no_of_comments +
         b.no_of_registered_views +
-        b.no_of_nonregistered_views -
+        b.no_of_nonregistered_views +
+        new Date(b.date) -
         (a.no_of_comments +
           a.no_of_registered_views +
-          a.no_of_nonregistered_views)
+          a.no_of_nonregistered_views +
+          new Date(a.date))
       );
     });
     res.json(rankedNews);
@@ -501,12 +511,14 @@ router.get("/news/rankedNews/:newsName", async (req, res) => {
     });
     const rankedNews = await GetAllNews.sort(function (a, b) {
       return (
-        b.no_of_comments +
-        b.no_of_registered_views +
-        b.no_of_nonregistered_views -
-        (a.no_of_comments +
-          a.no_of_registered_views +
-          a.no_of_nonregistered_views)
+        new Date(a.date) +
+        a.no_of_comments +
+        a.no_of_registered_views +
+        a.no_of_nonregistered_views -
+        (new Date(b.date) +
+          b.no_of_comments +
+          b.no_of_registered_views +
+          b.no_of_nonregistered_views)
       );
     });
     res.send(rankedNews);
@@ -521,17 +533,22 @@ router.post("/news/increaseViews", async (req, res) => {
   try {
     const newsData = await AllNewsModal.findById(req.body.newsId);
     await AllNewsModal.findByIdAndUpdate(
-      req.body.newsId, {
+      req.body.newsId,
+      {
         $push: {
           registered_views: {
             newsId: req.body.newsId,
             userId: req.body.userId === "" ? "" : req.body.userId,
           },
         },
-        no_of_registered_views: req.body.userId === "" ?
-          newsData.no_of_registered_views : newsData.no_of_registered_views + 1,
-        no_of_nonregistered_views: req.body.userId === "" ?
-          newsData.no_of_nonregistered_views + 1 : newsData.no_of_nonregistered_views,
+        no_of_registered_views:
+          req.body.userId === ""
+            ? newsData.no_of_registered_views
+            : newsData.no_of_registered_views + 1,
+        no_of_nonregistered_views:
+          req.body.userId === ""
+            ? newsData.no_of_nonregistered_views + 1
+            : newsData.no_of_nonregistered_views,
       },
       function (err) {
         if (err) {
@@ -756,13 +773,16 @@ router.post("/news/all/delete", async (req, res) => {
 // patch single new news from mongon db end
 router.patch("/news/all/:newsid", async (req, res) => {
   try {
-    const RemoveSingleNews = await AllNewsModal.updateOne({
-      _id: req.params.newsid,
-    }, {
-      $set: {
-        title: req.body.title,
+    const RemoveSingleNews = await AllNewsModal.updateOne(
+      {
+        _id: req.params.newsid,
       },
-    });
+      {
+        $set: {
+          title: req.body.title,
+        },
+      }
+    );
     res.json(RemoveSingleNews);
   } catch (error) {
     res.json({
