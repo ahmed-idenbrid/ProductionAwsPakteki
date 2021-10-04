@@ -8,6 +8,7 @@ import axios from "axios";
 export default class FootBar extends React.Component {
   state = {
     userData: {},
+    loggedIn: false,
   };
   componentDidMount() {
     const config = {
@@ -19,10 +20,14 @@ export default class FootBar extends React.Component {
       if (res.data.Message) {
         localStorage.removeItem("token");
         localStorage.removeItem("userData");
+        this.setState({
+          loggedIn: false,
+        });
       } else {
         this.setState(
           {
             userData: res.data,
+            loggedIn: true,
           },
           () => {
             localStorage.setItem("userData", JSON.stringify(res.data));
@@ -87,7 +92,7 @@ export default class FootBar extends React.Component {
             borderRadius: "5px",
             padding: "5px 10px",
           }}
-          to="/mypage"
+          to={this.state.loggedIn ? "/mypage" : "/login"}
         >
           <span className="footbar-item-container d-flex flex-column align-items-center">
             <FaUser className="footbar-icons" />

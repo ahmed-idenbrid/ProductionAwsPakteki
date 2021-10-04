@@ -51,7 +51,7 @@ export default class Mypage extends Component {
         }
       );
     } else {
-      this.props.history.push("/login");
+      this.props.routerParams.history.push("/login");
     }
   }
 
