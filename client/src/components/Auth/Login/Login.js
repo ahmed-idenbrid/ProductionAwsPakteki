@@ -103,7 +103,7 @@ export default class Login extends Component {
                     type="submit">
                     Login
                   </button>
-                  <span className="py-2 pt-3">OR</span>
+                  <span className="py-2 pt-3 m-auto">OR</span>
                   <div className="d-flex flex-column mt-2">
                     <Link to="/forgotpassword" className="my-links m-auto">
                       Forgot Your Password.?

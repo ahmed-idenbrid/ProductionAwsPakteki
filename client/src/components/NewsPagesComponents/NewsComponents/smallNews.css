@@ -7,6 +7,7 @@
   padding: 4px 8px;
   background-color: #fff;
   cursor: pointer;
+  border-bottom: 2px solid #eee;
 }
 
 .Image {
@@ -28,7 +29,7 @@
 
 .newsContent {
   margin: 0px 0px 0px 5px;
-  border-bottom: 2px solid #eee;
+  /* border-bottom: 2px solid #eee; */
   width: 100%;
   display: flex;
   flex-direction: column;
