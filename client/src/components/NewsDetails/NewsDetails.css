@@ -2,15 +2,19 @@
   z-index: 1;
   position: relative;
   width: 100%;
-  height: 200px;
+  height: 400px;
   display: block;
   background-color: #eee;
-  background-position: 50% 50%;
+  /* background-position: 50% 50%; */
   background-size: cover;
   background-repeat: no-repeat;
   border: 1px solid #eee;
 }
-
+@media screen and (max-width:768px){
+  .banner {
+    height: 200px;
+  }
+}
 .banner > .bannerShareIcon{
   position: absolute;
   right: 10px;
