@@ -106,6 +106,12 @@ export default function Categorybar({ pathname, history }) {
       <div>
         <div className="col-12 py-2 ranking-container-heading">
           <span
+            onClick={openNav}
+            style={{ cursor: "pointer", padding: "6px 28px" }}
+          >
+            Category {'>'}
+          </span>
+          <span
             style={{ cursor: "pointer" }}
             onClick={() => {
               if (pathname !== "/ranking") {
@@ -114,13 +120,6 @@ export default function Categorybar({ pathname, history }) {
             }}
           >
             Top ranking
-          </span>
-          <span
-            onClick={openNav}
-            className="info btn m-0"
-            style={{ cursor: "pointer", padding: "6px 28px" }}
-          >
-            Category
           </span>
         </div>
  

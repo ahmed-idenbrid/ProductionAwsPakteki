@@ -33,7 +33,7 @@ export default class Watch extends Component {
 
           {/* news start single */}
           <Link to="/news/geo-news-live" className="col-12 p-0 my-1">
-            <div className="my-page-content px-2 d-flex">
+            <div className="my-page-content d-flex">
               <img height={"100px"} src={geologo} alt="" />
               
               <div className="my-page-content-text ml-2 w-100 d-flex flex-column justify-content-between">
@@ -55,7 +55,7 @@ export default class Watch extends Component {
           {/* news end single*/}
           {/* news start single */}
           <Link to="/news/ary-news-live" className="col-12 p-0 my-1">
-            <div className="my-page-content px-2 d-flex">
+            <div className="my-page-content d-flex">
               <img height={"100px"} src={arylogo} alt="" />
               <div className="my-page-content-text ml-2 w-100 d-flex flex-column justify-content-between">
                 <div className="font-size-13 four-line">
@@ -76,7 +76,7 @@ export default class Watch extends Component {
           {/* news end single*/}
           {/* news start single */}
           <Link to="/news/duniya-news-live" className="col-12 p-0 my-1">
-            <div className="my-page-content px-2 d-flex ">
+            <div className="my-page-content d-flex ">
               <img height={"100px"} src={duniyalogo} alt="" />
               <div className="my-page-content-text ml-2 w-100 d-flex flex-column justify-content-between">
                 <div className="font-size-13 four-line">
@@ -96,7 +96,7 @@ export default class Watch extends Component {
           {/* news end single*/}
           {/* news start single */}
           <Link to="/news/dawn-news-live" className="col-12 p-0 my-1">
-            <div className="my-page-content px-2 d-flex">
+            <div className="my-page-content d-flex">
               <img height={"100px"} src={dawnlogo} alt="" />
               <div className="my-page-content-text ml-2 w-100 d-flex flex-column justify-content-between">
                 <div className="font-size-13 four-line">
@@ -117,7 +117,7 @@ export default class Watch extends Component {
           {/* news end single*/}
           {/* news start single */}
           <Link to="/news/gnn-news-live" className="col-12 p-0 my-1">
-            <div className="my-page-content px-2 d-flex">
+            <div className="my-page-content d-flex">
               <img height={"100px"} src={gnnlogo} alt="" />
               <div className="my-page-content-text ml-2 w-100 d-flex flex-column justify-content-between">
                 <div className="font-size-13 four-line">
@@ -138,7 +138,7 @@ export default class Watch extends Component {
           {/* news end single*/}
           {/* news start single */}
           <Link to="/news/city24-news-live" className="col-12 p-0 my-1">
-            <div className="my-page-content px-2 d-flex">
+            <div className="my-page-content d-flex">
               <img height={"100px"} src={city42logo} alt="" />
               <div className="my-page-content-text ml-2 w-100 d-flex flex-column justify-content-between">
                 <div className="font-size-13 four-line">
@@ -160,7 +160,7 @@ export default class Watch extends Component {
           {/* news end single*/}
           {/* news start single */}
           <Link to="/news/24-news-live" className="col-12 p-0 my-1">
-            <div className="my-page-content px-2 d-flex">
+            <div className="my-page-content d-flex">
               <img height={"100px"} src={logo24_news} alt="" />
               <div className="my-page-content-text ml-2 w-100 d-flex flex-column justify-content-between">
                 <div className="font-size-13 four-line">
