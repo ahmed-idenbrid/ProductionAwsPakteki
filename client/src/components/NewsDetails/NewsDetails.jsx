@@ -38,7 +38,7 @@ import UrduNews from "../Categories/PakNewsLogo/urdu-news.svg";
 import ZaiqaTV from "../Categories/PakNewsLogo/Zaiqa-TV.svg";
 import JhangNews from "../Categories/PakNewsLogo/Jhang-News.svg";
 import NeoNews from "../Categories/PakNewsLogo/neo.svg";
-
+import { ShimmerText, ShimmerTitle, ShimmerThumbnail } from "react-shimmer-effects";
 export default class NewsDetails extends Component {
   state = {
     singleNews: "",
@@ -178,10 +178,10 @@ export default class NewsDetails extends Component {
         <NavBar routerParams={this.props.routerParams} />
 
         <div className="news-details-container pb-2 pb-5 mb-5">
-          <div
+          {this.state.singleNews.image == null ? <ShimmerThumbnail height={200} className="m-0" rounded /> : (
+            <div
             className="banner"
-            style={{ backgroundImage: `url(${this.state.singleNews.image})` }}
-          >
+            style={{ backgroundImage: `url(${this.state.singleNews.image})` }}>
             {/* <FiShare className="bannerShareIcon" data-target="#shareModal" data-toggle="modal"/> */}
             <img
               data-toggle="modal"
@@ -205,55 +205,57 @@ export default class NewsDetails extends Component {
                     this.state.singleNews.channel === "Dawn"
                       ? DawnNews
                       : this.state.singleNews.channel === "city42"
-                      ? c42News
-                      : this.state.singleNews.channel === "GEO"
-                      ? geoNews
-                      : this.state.singleNews.channel === "Urdupoint"
-                      ? UrduPointNews
-                      : this.state.singleNews.channel === "Express"
-                      ? expressNews
-                      : this.state.singleNews.channel === "SAMAA"
-                      ? SamaNews
-                      : this.state.singleNews.channel === "NeoNetwork"
-                      ? NeoNews
-                      : this.state.singleNews.channel === "Bol"
-                      ? bolNews
-                      : this.state.singleNews.channel === "AbbTakk"
-                      ? AbTkNews
-                      : this.state.singleNews.channel === "92News"
-                      ? NintyTwoNews
-                      : this.state.singleNews.channel === "24NewsHD"
-                      ? duniyaNews
-                      : this.state.singleNews.channel === "Royalnews"
-                      ? royalNews
-                      : this.state.singleNews.channel === "Newsone"
-                      ? OnNews
-                      : this.state.singleNews.channel === "GNN"
-                      ? gnnNews
-                      : this.state.singleNews.channel === "Dunya"
-                      ? duniyaNews
-                      : this.state.singleNews.channel === "Dunya"
-                      ? MangoBaaz
-                      : this.state.singleNews.channel === "Dunya"
-                      ? SundayNews
-                      : this.state.singleNews.channel === "Dunya"
-                      ? UrduNews
-                      : this.state.singleNews.channel === "Dunya"
-                      ? ZaiqaTV
-                      : this.state.singleNews.channel === "Dunya"
-                      ? JhangNews
-                      : this.state.singleNews.channel === "Dunya"
-                      ? HelloPakistan
-                      : this.state.singleNews.channel
+                        ? c42News
+                        : this.state.singleNews.channel === "GEO"
+                          ? geoNews
+                          : this.state.singleNews.channel === "Urdupoint"
+                            ? UrduPointNews
+                            : this.state.singleNews.channel === "Express"
+                              ? expressNews
+                              : this.state.singleNews.channel === "SAMAA"
+                                ? SamaNews
+                                : this.state.singleNews.channel === "NeoNetwork"
+                                  ? NeoNews
+                                  : this.state.singleNews.channel === "Bol"
+                                    ? bolNews
+                                    : this.state.singleNews.channel === "AbbTakk"
+                                      ? AbTkNews
+                                      : this.state.singleNews.channel === "92News"
+                                        ? NintyTwoNews
+                                        : this.state.singleNews.channel === "24NewsHD"
+                                          ? duniyaNews
+                                          : this.state.singleNews.channel === "Royalnews"
+                                            ? royalNews
+                                            : this.state.singleNews.channel === "Newsone"
+                                              ? OnNews
+                                              : this.state.singleNews.channel === "GNN"
+                                                ? gnnNews
+                                                : this.state.singleNews.channel === "Dunya"
+                                                  ? duniyaNews
+                                                  : this.state.singleNews.channel === "Dunya"
+                                                    ? MangoBaaz
+                                                    : this.state.singleNews.channel === "Dunya"
+                                                      ? SundayNews
+                                                      : this.state.singleNews.channel === "Dunya"
+                                                        ? UrduNews
+                                                        : this.state.singleNews.channel === "Dunya"
+                                                          ? ZaiqaTV
+                                                          : this.state.singleNews.channel === "Dunya"
+                                                            ? JhangNews
+                                                            : this.state.singleNews.channel === "Dunya"
+                                                              ? HelloPakistan
+                                                              : this.state.singleNews.channel
                   }
                   alt="channel"
                 />
               </a>
             </div>
           </div>
+          )}
           <div className="news-details-text-container p-1">
             <font className="news-details-headline">
-              {this.state.singleNews.title}
+              {this.state.singleNews.title == null ? <ShimmerTitle line={1} className="m-0" /> : (
+                this.state.singleNews.title)}
             </font>
             <br />
             <div className="iconsShare">
@@ -309,15 +311,13 @@ export default class NewsDetails extends Component {
               <font className="news-details-source">
                 {this.state.singleNews.description == null ? (
                   <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Nesciunt, et!
+                    <ShimmerText className="m-0" line={5} />
                   </p>
                 ) : (
                   // Special property wasn't working in anywhere except inline-CSS for limiting lines
                   <div
                     className="line-clamp-5 px-1"
-                    style={{ WebkitBoxOrient: "vertical" }}
-                  >
+                    style={{ WebkitBoxOrient: "vertical" }}>
                     {this.state.singleNews.description}
                   </div>
                 )}
@@ -463,54 +463,54 @@ export default class NewsDetails extends Component {
             </div>
             <div className="col-12 px-1 user-comments" id="bottom">
               {this.state.singleNews.comments === [] ||
-              this.state.singleNews.comments === undefined
+                this.state.singleNews.comments === undefined
                 ? null
                 : this.state.singleNews.comments.map((obj, index) => {
-                    return (
-                      <div className="single-comment mb-3" key={index}>
-                        <img
-                          className="user-img align-center-vertical"
-                          src="https://s.yimg.jp/images/jpnews/cre/comment/all/images/user_icon_color_blue.png"
-                          alt="img not found"
-                        />
-                        <span className="user-comment-wrap w-100 px-2 py-1">
-                          <p className="w-100 m-0 d-flex align-items-center text-dark justify-content-between">
-                            <small>
-                              <b>
-                                {obj.username === null
-                                  ? "Anonymous"
-                                  : obj.username}
-                              </b>
+                  return (
+                    <div className="single-comment mb-3" key={index}>
+                      <img
+                        className="user-img align-center-vertical"
+                        src="https://s.yimg.jp/images/jpnews/cre/comment/all/images/user_icon_color_blue.png"
+                        alt="img not found"
+                      />
+                      <span className="user-comment-wrap w-100 px-2 py-1">
+                        <p className="w-100 m-0 d-flex align-items-center text-dark justify-content-between">
+                          <small>
+                            <b>
+                              {obj.username === null
+                                ? "Anonymous"
+                                : obj.username}
+                            </b>
+                          </small>
+                          {obj.userId === this.state.userData._id ? (
+                            <small
+                              className="delete-btn"
+                              onClick={() => {
+                                axios
+                                  .post(BaseURL + "/newsCommentDelete", {
+                                    newsId: this.state.singleNews._id,
+                                    userId: this.state.userData._id,
+                                    commentNo: obj.commentNo,
+                                  })
+                                  .then((response) => {
+                                    if (response.data.success) {
+                                      this.getSingleNewsData(
+                                        this.props.routerParams.match.params
+                                          .newsId
+                                      );
+                                    }
+                                  });
+                              }}
+                            >
+                              <FaTrash style={{ fontSize: "18px" }} />
                             </small>
-                            {obj.userId === this.state.userData._id ? (
-                              <small
-                                className="delete-btn"
-                                onClick={() => {
-                                  axios
-                                    .post(BaseURL + "/newsCommentDelete", {
-                                      newsId: this.state.singleNews._id,
-                                      userId: this.state.userData._id,
-                                      commentNo: obj.commentNo,
-                                    })
-                                    .then((response) => {
-                                      if (response.data.success) {
-                                        this.getSingleNewsData(
-                                          this.props.routerParams.match.params
-                                            .newsId
-                                        );
-                                      }
-                                    });
-                                }}
-                              >
-                                <FaTrash style={{ fontSize: "18px" }} />
-                              </small>
-                            ) : null}
-                          </p>
-                          <small className="color-grey"> {obj.comment} </small>
-                        </span>
-                      </div>
-                    );
-                  })}
+                          ) : null}
+                        </p>
+                        <small className="color-grey"> {obj.comment} </small>
+                      </span>
+                    </div>
+                  );
+                })}
             </div>
             <div className="col-12 p-0 pr-2 my-2">
               <div className="commnet-input">

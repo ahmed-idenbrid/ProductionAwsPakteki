@@ -45,7 +45,7 @@ const bigNewsComponent = ({ newsObj }) => {
               <FiMessageSquare style={{ fontSize: "15px" }} /> &nbsp;
               {newsObj.no_of_comments}
             </span>
-            <span className="px-1">
+            <span>
               <FaRegEye style={{ fontSize: "15px" }} /> &nbsp;
               {newsObj.no_of_registered_views +
                 newsObj.no_of_nonregistered_views}
