@@ -107,8 +107,8 @@
   text-overflow: ellipsis;
 }
 
-.w-1rem {
-  width: 1rem;
+.w-1-half-rem {
+  width: 1.5rem;
 }
 
 .breadcrumb-items-container {
