@@ -288,7 +288,7 @@ export default class NewsDetails extends Component {
                 <span className="mb-0 newsDate ml-0">
                   {this.state.singleNews.date}
                 </span>
-                <span className="mb-0 small-icons-text-comments font-color-blue px-1">
+                <span className="mb-0 small-icons-text-comments px-1">
                   <label htmlFor="input-comment">
                     <FiMessageSquare className="IconComment" />
                   </label>{" "}
