@@ -22,7 +22,7 @@
   display: block;
   background-color: #eee;
   background-position: 50% 50%;
-  background-size: cover;
+  background-size: 100%;
   background-repeat: no-repeat;
   border: 1px solid #eee;
 }
