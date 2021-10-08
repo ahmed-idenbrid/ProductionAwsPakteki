@@ -94,3 +94,10 @@
 {
   width: 85%;
 }
+.user-profile-container
+{
+  height: 18px;
+  width: 18px;
+  border-radius: 100%;
+  border: 1px solid black;
+}

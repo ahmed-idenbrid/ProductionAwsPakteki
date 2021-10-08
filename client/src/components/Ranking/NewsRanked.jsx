@@ -179,11 +179,11 @@ export default class NewsRank extends React.Component {
             {this.props.rankedNewsObj.comments.length > 0 ? (
               <React.Fragment>
                 {/* <GrEmoji style={{ fontSize: "23px" }} /> &nbsp;  */}
-                {this.props.rankedNewsObj.comments[0].userId ? <img src={this.state.userData.profilePicture}/> : <GrEmoji style={{ fontSize: "23px" }} />}
+                <div className="user-profile-container m-1"></div>
                 {this.props.rankedNewsObj.comments[0].comment}
               </React.Fragment>
             ) : <React.Fragment>
-            <GrEmoji style={{ fontSize: "23px" }} /> &nbsp;
+            <GrEmoji style={{ fontSize: "23px" }} className='mx-1' /> &nbsp;
           </React.Fragment>}
           </p>
         </div>
