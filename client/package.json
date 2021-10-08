@@ -22,6 +22,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "2.1.8",
     "react-share": "^4.4.0",
+    "react-shimmer-effects": "^1.0.2",
     "react-swipeable-views": "^0.13.9",
     "react-tabs": "^3.2.2",
     "react-toastify": "^7.0.4",

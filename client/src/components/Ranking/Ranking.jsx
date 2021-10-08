@@ -35,6 +35,7 @@ export default class Ranking extends Component {
       },
     };
     axios.get("http://3.142.50.232:5000/api/auth/user", config).then((res) => {
+      console.log(res);
       if (res.data.Message) {
         localStorage.removeItem("token");
         localStorage.removeItem("userData");
