@@ -173,7 +173,7 @@ export default class NewsRank extends React.Component {
             </div>
           </div>
           <p
-            className="ml-24-p mt-2 w-100 d-flex align-items-center justify-content-start"
+            className="mx-auto mt-2 rankedNewsComment d-flex align-items-center justify-content-start"
             style={{ backgroundColor: "#edeff1", color: "#8d8d8d" }}
           >
             {this.props.rankedNewsObj.comments.length > 0 ? (
