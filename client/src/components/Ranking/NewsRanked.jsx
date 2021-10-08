@@ -71,7 +71,7 @@ export default class NewsRank extends React.Component {
       // console.log(this.props.)
       <React.Fragment>
         <div className="row m-0 ranking-news">
-          <div className="col-4 col-md-2 d-flex pt-1 pr-3 justify-content-center">
+          <div className="d-flex pt-1 pr-3">
             <div
               className="ranking-box-badge"
               style={{
@@ -87,20 +87,20 @@ export default class NewsRank extends React.Component {
             >
               {this.props.rankedNewsObjIndex + 1}
             </div>
-              
+            <div>
+              <div className='d-flex'>
             <img
               className="ranking-content-img"
               src={this.props.rankedNewsObj.image}
               alt="ranking-img"
             />
-          </div>
           <div className="col-8 col-md-10 d-flex flex-column">
             <div>
               <div className="title-rank-news">
                 {this.props.rankedNewsObj.title}
               </div>
               <p
-                className="pt-2 mt-3 mb-1"
+                className="pt-2 mt-2 mb-1"
                 style={{ fontSize: "13px", height: "23px" }}
               >
                 {this.props.rankedNewsObj.date}
@@ -118,9 +118,12 @@ export default class NewsRank extends React.Component {
                       this.props.rankedNewsObj.no_of_nonregistered_views}
                   </span>
                 </div>
+               
+
+
                 <small className="news-channel">
               <img
-                className="w-1-half-rem"
+                className="w-27p"
                 src={
                   this.props.rankedNewsObj.channel === "Dawn"
                     ? DawnNews
@@ -152,28 +155,29 @@ export default class NewsRank extends React.Component {
                     ? gnnNews
                     : this.props.rankedNewsObj.channel === "Dunya"
                     ? duniyaNews
-                    : this.props.rankedNewsObj.channel === "Dunya"
+                    : this.props.rankedNewsObj.channel === "Mangobaaz"
                     ? MangoBaaz
-                    : this.props.rankedNewsObj.channel === "Dunya"
+                    : this.props.rankedNewsObj.channel === "SundayNews"
                     ? SundayNews
-                    : this.props.rankedNewsObj.channel === "Dunya"
+                    : this.props.rankedNewsObj.channel === "Urdunews"
                     ? UrduNews
-                    : this.props.rankedNewsObj.channel === "Dunya"
+                    : this.props.rankedNewsObj.channel === "Zaiqatv"
                     ? ZaiqaTV
-                    : this.props.rankedNewsObj.channel === "Dunya"
+                    : this.props.rankedNewsObj.channel === "Jangnews"
                     ? JhangNews
-                    : this.props.rankedNewsObj.channel === "Dunya"
+                    : this.props.rankedNewsObj.channel === "HelloPakistanMagazine"
                     ? HelloPakistan
                     : this.props.rankedNewsObj.channel
                 }
                 alt="channel"
               />
             </small>
-              </div>
             </div>
           </div>
+              </div>
+            </div>
           <p
-            className="mx-auto mt-2 rankedNewsComment d-flex align-items-center justify-content-start"
+            className="mt-2 rankedNewsComment d-flex align-items-center justify-content-start"
             style={{ backgroundColor: "#edeff1", color: "#8d8d8d" }}
           >
             {this.props.rankedNewsObj.comments.length > 0 ? (
@@ -186,6 +190,9 @@ export default class NewsRank extends React.Component {
             <GrEmoji style={{ fontSize: "23px" }} className='mx-1' /> &nbsp;
           </React.Fragment>}
           </p>
+          </div>
+
+        </div>
         </div>
       </React.Fragment>
     );

@@ -200,54 +200,54 @@ export default class NewsDetails extends Component {
                 href={this.state.singleNews.permalink}
               >
                 <img
-                  className="ChannelImage ml-2"
-                  src={
-                    this.state.singleNews.channel === "Dawn"
-                      ? DawnNews
-                      : this.state.singleNews.channel === "city42"
-                        ? c42News
-                        : this.state.singleNews.channel === "GEO"
-                          ? geoNews
-                          : this.state.singleNews.channel === "Urdupoint"
-                            ? UrduPointNews
-                            : this.state.singleNews.channel === "Express"
-                              ? expressNews
-                              : this.state.singleNews.channel === "SAMAA"
-                                ? SamaNews
-                                : this.state.singleNews.channel === "NeoNetwork"
-                                  ? NeoNews
-                                  : this.state.singleNews.channel === "Bol"
-                                    ? bolNews
-                                    : this.state.singleNews.channel === "AbbTakk"
-                                      ? AbTkNews
-                                      : this.state.singleNews.channel === "92News"
-                                        ? NintyTwoNews
-                                        : this.state.singleNews.channel === "24NewsHD"
-                                          ? duniyaNews
-                                          : this.state.singleNews.channel === "Royalnews"
-                                            ? royalNews
-                                            : this.state.singleNews.channel === "Newsone"
-                                              ? OnNews
-                                              : this.state.singleNews.channel === "GNN"
-                                                ? gnnNews
-                                                : this.state.singleNews.channel === "Dunya"
-                                                  ? duniyaNews
-                                                  : this.state.singleNews.channel === "Dunya"
-                                                    ? MangoBaaz
-                                                    : this.state.singleNews.channel === "Dunya"
-                                                      ? SundayNews
-                                                      : this.state.singleNews.channel === "Dunya"
-                                                        ? UrduNews
-                                                        : this.state.singleNews.channel === "Dunya"
-                                                          ? ZaiqaTV
-                                                          : this.state.singleNews.channel === "Dunya"
-                                                            ? JhangNews
-                                                            : this.state.singleNews.channel === "Dunya"
-                                                              ? HelloPakistan
-                                                              : this.state.singleNews.channel
-                  }
-                  alt="channel"
-                />
+                className="w-27p"
+                src={
+                  this.props.rankedNewsObj.channel === "Dawn"
+                    ? DawnNews
+                    : this.props.rankedNewsObj.channel === "city42"
+                    ? c42News
+                    : this.props.rankedNewsObj.channel === "GEO"
+                    ? geoNews
+                    : this.props.rankedNewsObj.channel === "Urdupoint"
+                    ? UrduPointNews
+                    : this.props.rankedNewsObj.channel === "Express"
+                    ? expressNews
+                    : this.props.rankedNewsObj.channel === "SAMAA"
+                    ? SamaNews
+                    : this.props.rankedNewsObj.channel === "NeoNetwork"
+                    ? NeoNews
+                    : this.props.rankedNewsObj.channel === "Bol"
+                    ? bolNews
+                    : this.props.rankedNewsObj.channel === "AbbTakk"
+                    ? AbTkNews
+                    : this.props.rankedNewsObj.channel === "92News"
+                    ? NintyTwoNews
+                    : this.props.rankedNewsObj.channel === "24NewsHD"
+                    ? duniyaNews
+                    : this.props.rankedNewsObj.channel === "Royalnews"
+                    ? royalNews
+                    : this.props.rankedNewsObj.channel === "Newsone"
+                    ? OnNews
+                    : this.props.rankedNewsObj.channel === "GNN"
+                    ? gnnNews
+                    : this.props.rankedNewsObj.channel === "Dunya"
+                    ? duniyaNews
+                    : this.props.rankedNewsObj.channel === "Mangobaaz"
+                    ? MangoBaaz
+                    : this.props.rankedNewsObj.channel === "SundayNews"
+                    ? SundayNews
+                    : this.props.rankedNewsObj.channel === "Urdunews"
+                    ? UrduNews
+                    : this.props.rankedNewsObj.channel === "Zaiqatv"
+                    ? ZaiqaTV
+                    : this.props.rankedNewsObj.channel === "Jangnews"
+                    ? JhangNews
+                    : this.props.rankedNewsObj.channel === "HelloPakistanMagazine"
+                    ? HelloPakistan
+                    : this.props.rankedNewsObj.channel
+                }
+                alt="channel"
+              />
               </a>
             </div>
           </div>
