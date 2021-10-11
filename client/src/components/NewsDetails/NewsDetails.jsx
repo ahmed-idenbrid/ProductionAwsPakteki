@@ -554,8 +554,8 @@ export default class NewsDetails extends Component {
             <div className="col-12 px-1">
               <small className="heading-related-news">
                 Related News
-                <div className="description-container-common col-12 p-0 my-1">
-                  <p className="font-size-12 mb-0">
+                <div className="description-container-common col-12 p-0 mb-1 mt-0">
+                  <p className="font-size-10 mb-0">
                     Related to the news category you are checking
                   </p>
                 </div>
@@ -612,8 +612,8 @@ export default class NewsDetails extends Component {
             <div className="col-12 px-1">
               <small className="heading-related-news">
                 Recommended News
-                <div className="description-container-common col-12 p-0 my-1">
-                  <p className="font-size-12 mb-0">
+                <div className="description-container-common col-12 p-0 mb-1 mt-0">
+                  <p className="font-size-10 mb-0">
                     Recommended news based on your user experience
                   </p>
                 </div>
