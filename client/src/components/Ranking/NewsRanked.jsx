@@ -101,7 +101,7 @@ export default class NewsRank extends React.Component {
               </div>
               <p
                 className="pt-2 mt-2 mb-1"
-                style={{ fontSize: "13px", height: "23px" }}
+                style={{ fontSize: "13px" }}
               >
                 {this.props.rankedNewsObj.date}
               </p>
@@ -184,11 +184,15 @@ export default class NewsRank extends React.Component {
               <React.Fragment>
                 {/* <GrEmoji style={{ fontSize: "23px" }} /> &nbsp;  */}
                 {/* user-profile-container */}
+                <div className="user-profile-holder">
                 <div className="user-profile-container m-1"></div>
+                </div>
                 {this.props.rankedNewsObj.comments[0].comment}
               </React.Fragment>
             ) : <React.Fragment>
+                <div className="user-profile-holder">
             <GrEmoji style={{ fontSize: "23px" }} className='mx-1' /> &nbsp;
+            </div>
           </React.Fragment>}
           </p>
           </div>

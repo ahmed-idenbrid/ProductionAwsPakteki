@@ -57,6 +57,10 @@
   font-size: 23px;
   vertical-align: top;
 }
+.user-profile-holder
+{
+  width: 5%;
+}
 .no-rank-msg {
   min-height: 50vh;
   /* display: flex;
@@ -85,6 +89,10 @@
     height: 90px;
     width: 90px;
   }
+  .comments-block
+  {
+    min-width: 620px;
+  }
 }
 .ml-24-p
 {
@@ -92,7 +100,8 @@
 }
 .rankedNewsComment
 {
-  width: 50%;
+  font-size: small;
+  width: auto;
 }
 .user-profile-container
 {
