@@ -71,7 +71,7 @@ export default class NewsRank extends React.Component {
       // console.log(this.props.)
       <React.Fragment>
         <div className="row m-0 ranking-news">
-          <div className="d-flex pt-1 pr-3">
+          <div className="col-4 col-md-2 d-flex pt-1 pr-3 justify-content-center">
             <div
               className="ranking-box-badge"
               style={{
@@ -87,21 +87,21 @@ export default class NewsRank extends React.Component {
             >
               {this.props.rankedNewsObjIndex + 1}
             </div>
-            <div>
-              <div className='d-flex'>
+              
             <img
               className="ranking-content-img"
               src={this.props.rankedNewsObj.image}
               alt="ranking-img"
             />
+          </div>
           <div className="col-8 col-md-10 d-flex flex-column">
             <div>
               <div className="title-rank-news">
                 {this.props.rankedNewsObj.title}
               </div>
               <p
-                className="pt-2 mt-2 mb-1"
-                style={{ fontSize: "13px" }}
+                className="pt-2 mt-3 mb-1"
+                style={{ fontSize: "13px", height: "23px" }}
               >
                 {this.props.rankedNewsObj.date}
               </p>
@@ -118,12 +118,9 @@ export default class NewsRank extends React.Component {
                       this.props.rankedNewsObj.no_of_nonregistered_views}
                   </span>
                 </div>
-               
-
-
                 <small className="news-channel">
               <img
-                className="w-27p"
+                className="w-1-half-rem"
                 src={
                   this.props.rankedNewsObj.channel === "Dawn"
                     ? DawnNews
@@ -155,49 +152,40 @@ export default class NewsRank extends React.Component {
                     ? gnnNews
                     : this.props.rankedNewsObj.channel === "Dunya"
                     ? duniyaNews
-                    : this.props.rankedNewsObj.channel === "Mangobaaz"
+                    : this.props.rankedNewsObj.channel === "Dunya"
                     ? MangoBaaz
-                    : this.props.rankedNewsObj.channel === "SundayNews"
+                    : this.props.rankedNewsObj.channel === "Dunya"
                     ? SundayNews
-                    : this.props.rankedNewsObj.channel === "Urdunews"
+                    : this.props.rankedNewsObj.channel === "Dunya"
                     ? UrduNews
-                    : this.props.rankedNewsObj.channel === "Zaiqatv"
+                    : this.props.rankedNewsObj.channel === "Dunya"
                     ? ZaiqaTV
-                    : this.props.rankedNewsObj.channel === "Jangnews"
+                    : this.props.rankedNewsObj.channel === "Dunya"
                     ? JhangNews
-                    : this.props.rankedNewsObj.channel === "HelloPakistanMagazine"
+                    : this.props.rankedNewsObj.channel === "Dunya"
                     ? HelloPakistan
                     : this.props.rankedNewsObj.channel
                 }
                 alt="channel"
               />
             </small>
-            </div>
-          </div>
               </div>
             </div>
+          </div>
           <p
-            className="mt-2 rankedNewsComment d-flex align-items-center justify-content-start"
+            className="ml-24-p mt-2 w-100 d-flex align-items-center justify-content-start"
             style={{ backgroundColor: "#edeff1", color: "#8d8d8d" }}
           >
             {this.props.rankedNewsObj.comments.length > 0 ? (
               <React.Fragment>
                 {/* <GrEmoji style={{ fontSize: "23px" }} /> &nbsp;  */}
-                {/* user-profile-container */}
-                <div className="user-profile-holder">
-                <div className="user-profile-container m-1"></div>
-                </div>
+                {this.props.rankedNewsObj.comments[0].userId ? <img src={this.state.userData.profilePicture}/> : <GrEmoji style={{ fontSize: "23px" }} />}
                 {this.props.rankedNewsObj.comments[0].comment}
               </React.Fragment>
             ) : <React.Fragment>
-                <div className="user-profile-holder">
-            <GrEmoji style={{ fontSize: "23px" }} className='mx-1' /> &nbsp;
-            </div>
+            <GrEmoji style={{ fontSize: "23px" }} /> &nbsp;
           </React.Fragment>}
           </p>
-          </div>
-
-        </div>
         </div>
       </React.Fragment>
     );

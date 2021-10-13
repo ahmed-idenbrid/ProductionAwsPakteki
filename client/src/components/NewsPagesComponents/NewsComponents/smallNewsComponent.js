@@ -69,7 +69,7 @@ const smallNewsComponent = ({ newsObj }) => {
             </ul>
             <small className="news-channel">
               <img
-                className="w-27p"
+                className="w-1-half-rem"
                 src={
                   newsObj.channel === "Dawn"
                     ? DawnNews
