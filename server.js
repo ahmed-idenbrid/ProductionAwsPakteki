@@ -56,6 +56,6 @@ mongoose
 // var ip = process.env.IP;
 app.listen(PORT, () =>
   console.log(
-    `server is running on port ${PORT} in ${process.env.NODE_ENV} Environment`
+    `server is running on port ${process.env.NODE_ENV}:${PORT} Environment`
   )
 );
