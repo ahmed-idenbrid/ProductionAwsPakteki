@@ -3,6 +3,8 @@
   background-color: #fff;
   border-radius: 2px;
   cursor: pointer;
+  display:flex;
+  align-items:flex-start;
 }
 .ranking-container-heading {
   background-color: #f8f9fa;
@@ -22,7 +24,9 @@
   padding: 8px;
   margin-inline: 5px;
 }
-
+.w-27{
+  width: 27px;
+}
 .ranking-comments {
   font-size: 11px;
   margin: 4px;
@@ -84,8 +88,8 @@
   font-size: 14px;
 }
 .ranking-content-img {
-  height: 94px;
-  width: 94px;
+  height: 100px;
+  width: 100px;
 }
 
 @media (min-width: 500px) {
@@ -102,6 +106,12 @@
 {
   font-size: small;
   width: auto;
+  width:100%;
+  margin:0px;
+  display:flex; 
+  align-items:center;
+  justify-content:flex-start;
+  margin: 5px 0px 0px 0px;
 }
 .user-profile-container
 {

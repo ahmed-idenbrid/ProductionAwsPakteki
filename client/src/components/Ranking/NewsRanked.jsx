@@ -31,8 +31,7 @@ export default class NewsRank extends React.Component {
   state = {
     userData: {}
   };
-  componentDidMount()
-  {
+  componentDidMount() {
     // if(localStorage.getItem("userData"))
     // {
     //   this.setState(
@@ -40,34 +39,34 @@ export default class NewsRank extends React.Component {
     //       userData: JSON.parse(localStorage.getItem("userData"))
     //     })
     //   }
-      const config = {
-        headers: {
-          "auth-token": localStorage.getItem("token"),
-        },
-      };
-      axios.get("http://3.142.50.232:5000/api/auth/user", config).then((res) => {
-        if (res.data.Message) {
-          localStorage.removeItem("token");
-          localStorage.removeItem("userData");
-        } else {
-          localStorage.setItem("userData", JSON.stringify(res.data));
-          this.setState({
-            userId: res.data._id,
-          });
-        }
-      });
-      if(localStorage.getItem("userData"))
-    {
+    const config = {
+      headers: {
+        "auth-token": localStorage.getItem("token"),
+      },
+    };
+    axios.get("http://3.142.50.232:5000/api/auth/user", config).then((res) => {
+      if (res.data.Message) {
+        localStorage.removeItem("token");
+        localStorage.removeItem("userData");
+      } else {
+        localStorage.setItem("userData", JSON.stringify(res.data));
+        this.setState({
+          userId: res.data._id,
+        });
+      }
+    });
+    if (localStorage.getItem("userData")) {
       this.setState(
         {
           userData: JSON.parse(localStorage.getItem("userData"))
         })
-      }
-      console.log(JSON.parse(localStorage.getItem("userData")));
+    }
+    
   }
-      
-    render() {
-      return (
+
+  render() {
+    console.log(this.props.rankedNewsObj.channel,"channel");
+    return (
       // console.log(this.props.)
       <React.Fragment>
         <div className="row m-0 ranking-news">
@@ -79,127 +78,124 @@ export default class NewsRank extends React.Component {
                   this.props.rankedNewsObjIndex === 0
                     ? "#FF6464"
                     : this.props.rankedNewsObjIndex === 1
-                    ? "orange"
-                    : this.props.rankedNewsObjIndex === 2
-                    ? "green"
-                    : "grey",
+                      ? "orange"
+                      : this.props.rankedNewsObjIndex === 2
+                        ? "green"
+                        : "grey",
               }}
             >
               {this.props.rankedNewsObjIndex + 1}
             </div>
             <div className='w-100 overflow-hidden'>
               <div className='d-flex w-100'>
-            <img
-              className="ranking-content-img"
-              src={this.props.rankedNewsObj.image}
-              alt="ranking-img"
-            />
-          <div className="ml-3 d-flex flex-column w-100">
-            <div className='news-detail-holder'>
-              <div className="title-rank-news">
-                {this.props.rankedNewsObj.title}
-              </div>
-              <div className='mt-15p'>
-              <p
-                className="m-0"
-                style={{ fontSize: "13px" }}
-              >
-                {this.props.rankedNewsObj.date}
-              </p>
-                <div className="comments-block">
-                  <div className="comments-conuter">
-                    <span className="mb-0 small-icons-text-comments">
-                      <FiMessageSquare className="commentIcon" /> &nbsp;
-                      {this.props.rankedNewsObj.no_of_comments}
-                    </span>
-                    &nbsp;
-                    <span className="mb-0 pl-2 small-icons-text-comments">
-                      <FaRegEye style={{ fontSize: "15px" }} /> &nbsp;
-                      {this.props.rankedNewsObj.no_of_registered_views +
-                        this.props.rankedNewsObj.no_of_nonregistered_views}
-                    </span>
-                </div>
-                <small className="news-channel">
-              <img
-                className="w-27p"
-                src={
-                  this.props.rankedNewsObj.channel === "Dawn"
-                    ? DawnNews
-                    : this.props.rankedNewsObj.channel === "city42"
-                    ? c42News
-                    : this.props.rankedNewsObj.channel === "GEO"
-                    ? geoNews
-                    : this.props.rankedNewsObj.channel === "Urdupoint"
-                    ? UrduPointNews
-                    : this.props.rankedNewsObj.channel === "Express"
-                    ? expressNews
-                    : this.props.rankedNewsObj.channel === "SAMAA"
-                    ? SamaNews
-                    : this.props.rankedNewsObj.channel === "NeoNetwork"
-                    ? NeoNews
-                    : this.props.rankedNewsObj.channel === "Bol"
-                    ? bolNews
-                    : this.props.rankedNewsObj.channel === "AbbTakk"
-                    ? AbTkNews
-                    : this.props.rankedNewsObj.channel === "92News"
-                    ? NintyTwoNews
-                    : this.props.rankedNewsObj.channel === "24NewsHD"
-                    ? duniyaNews
-                    : this.props.rankedNewsObj.channel === "Royalnews"
-                    ? royalNews
-                    : this.props.rankedNewsObj.channel === "Newsone"
-                    ? OnNews
-                    : this.props.rankedNewsObj.channel === "GNN"
-                    ? gnnNews
-                    : this.props.rankedNewsObj.channel === "Dunya"
-                    ? duniyaNews
-                    : this.props.rankedNewsObj.channel === "Mangobaaz"
-                    ? MangoBaaz
-                    : this.props.rankedNewsObj.channel === "SundayNews"
-                    ? SundayNews
-                    : this.props.rankedNewsObj.channel === "Urdunews"
-                    ? UrduNews
-                    : this.props.rankedNewsObj.channel === "Zaiqatv"
-                    ? ZaiqaTV
-                    : this.props.rankedNewsObj.channel === "Jangnews"
-                    ? JhangNews
-                    : this.props.rankedNewsObj.channel === "HelloPakistanMagazine"
-                    ? HelloPakistan
-                    : this.props.rankedNewsObj.channel
-                }
-                alt="channel"
-              />
-            </small>
-            </div>
+                <img
+                  className="ranking-content-img"
+                  src={this.props.rankedNewsObj.image}
+                  alt="ranking-img"
+                />
+                <div className="ml-3 d-flex flex-column w-100">
+                  <div className='news-detail-holder'>
+                    <div className="title-rank-news">
+                      {this.props.rankedNewsObj.title}
+                    </div>
+                    <div className='mt-15p'>
+                      <p className="m-0" style={{ fontSize: "13px" }}>
+                        {this.props.rankedNewsObj.date}
+                      </p>
+                      <div className="comments-block">
+                        <div className="comments-conuter">
+                          <span className="mb-0 small-icons-text-comments">
+                            <FiMessageSquare className="commentIcon" /> &nbsp;
+                            {this.props.rankedNewsObj.no_of_comments}
+                          </span>
+                          &nbsp;
+                          <span className="mb-0 pl-2 small-icons-text-comments">
+                            <FaRegEye style={{ fontSize: "15px" }} /> &nbsp;
+                            {this.props.rankedNewsObj.no_of_registered_views +
+                              this.props.rankedNewsObj.no_of_nonregistered_views}
+                          </span>
+                        </div>
+                        <small className="news-channel">
+                          <img
+                            className="w-27"
+                            src={
+                              this.props.rankedNewsObj.channel === "Dawn"
+                                ? DawnNews
+                                : this.props.rankedNewsObj.channel === "city42"
+                                ? c42News
+                                : this.props.rankedNewsObj.channel === "GEO"
+                                ? geoNews
+                                : this.props.rankedNewsObj.channel === "Urdupoint"
+                                ? UrduPointNews
+                                : this.props.rankedNewsObj.channel === "Express"
+                                ? expressNews
+                                : this.props.rankedNewsObj.channel === "SAMAA"
+                                ? SamaNews
+                                : this.props.rankedNewsObj.channel === "NeoNetwork"
+                                ? NeoNews
+                                : this.props.rankedNewsObj.channel === "Bol"
+                                ? bolNews
+                                : this.props.rankedNewsObj.channel === "AbbTakk"
+                                ? AbTkNews
+                                : this.props.rankedNewsObj.channel === "92News"
+                                ? NintyTwoNews
+                                : this.props.rankedNewsObj.channel === "24NewsHD"
+                                ? duniyaNews
+                                : this.props.rankedNewsObj.channel === "Royalnews"
+                                ? royalNews
+                                : this.props.rankedNewsObj.channel === "Newsone"
+                                ? OnNews
+                                : this.props.rankedNewsObj.channel === "GNN"
+                                ? gnnNews
+                                : this.props.rankedNewsObj.channel === "Dunya"
+                                ? duniyaNews
+                                : this.props.rankedNewsObj.channel === "Mangobaaz"
+                                ? MangoBaaz
+                                : this.props.rankedNewsObj.channel === "SundayNews"
+                                ? SundayNews
+                                : this.props.rankedNewsObj.channel === "Urdunews"
+                                ? UrduNews
+                                : this.props.rankedNewsObj.channel === "Zaiqatv"
+                                ? ZaiqaTV
+                                : this.props.rankedNewsObj.channel === "Jangnews"
+                                ? JhangNews
+                                : this.props.rankedNewsObj.channel === "HelloPakistanMagazine"
+                                ? HelloPakistan
+                                : this.props.rankedNewsObj.channel
+                            }
+                            alt="channel"
+                          />
+                        </small>
+                      </div>
 
-            </div>
-          </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-          <p
-            className="mt-2 rankedNewsComment w-100 d-flex align-items-center justify-content-start"
-            style={{ backgroundColor: "#edeff1", color: "#8d8d8d" }}
-          >
-            {this.props.rankedNewsObj.comments.length > 0 ? (
-              <React.Fragment>
-                {/* <GrEmoji style={{ fontSize: "23px" }} /> &nbsp;  */}
-                {/* user-profile-container */}
+              {this.props.rankedNewsObj.comments.length > 0 ? (
+                <React.Fragment>
+                  <p className="rankedNewsComment"
+                    style={{ backgroundColor: "#edeff1", color: "#8d8d8d" }}>
+                    <GrEmoji style={{ fontSize: "23px" }} /> &nbsp; 
+                    {/* user-profile-container */}
+                   
+                    <div className='ranked-news-comment' style={{ WebkitBoxOrient: 'vertical' }}>
+                      {this.props.rankedNewsObj.comments[0].comment}
+                    </div>
+                  </p>
+                </React.Fragment>
+              ) : (
+                <React.Fragment>
+                {/* <div className="user-profile-holder">
+                      <GrEmoji style={{ fontSize: "23px" }} /> &nbsp;
+                    </div>
                 <div className="user-profile-holder">
-                  <div className="user-profile-container "></div>
-                </div>
-                <div className='ranked-news-comment' style={{WebkitBoxOrient:'vertical'}}>
-                  {this.props.rankedNewsObj.comments[0].comment}
-                </div>
+                  <div className="user-profile-container"></div>
+                </div>  */}
               </React.Fragment>
-            ) : <React.Fragment>
-                <div className="user-profile-holder">
-            <GrEmoji style={{ fontSize: "23px" }} /> &nbsp;
+              )}
             </div>
-          </React.Fragment>}
-          </p>
           </div>
-
-        </div>
         </div>
       </React.Fragment>
     );

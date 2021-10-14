@@ -78,7 +78,7 @@ export default class Ranking extends Component {
               return (
                 <article
                   key={index}
-                  className="ranking-content-box col-12 my-1 p-2 d-flex align-items-start"
+                  className="ranking-content-box col-12 my-1 p-2"
                   onClick={() => {
                     axios
                       .post(BaseURL + "/news/increaseViews", {
@@ -93,8 +93,7 @@ export default class Ranking extends Component {
                           toast.warn("Error Occurred");
                         }
                       });
-                  }}
-                >
+                  }}>
                   <NewsRanked rankedNewsObj={obj} rankedNewsObjIndex={index} />
                 </article>
               );
