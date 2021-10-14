@@ -36,7 +36,7 @@ class GnnNewsLive extends React.Component {
             width="100%"
             controls
             loop="true"
-            url="https://www.youtube.com/watch?v=q0mWq_mRgaA"
+            url="https://www.youtube.com/watch?v=vDybiTF3NGI"
           />
 
           {/* news start single */}
