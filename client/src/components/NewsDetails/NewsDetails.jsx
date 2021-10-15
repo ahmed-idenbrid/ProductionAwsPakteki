@@ -574,15 +574,16 @@ export default class NewsDetails extends Component {
                           .post(BaseURL + "/news/increaseViews", {
                             newsId: obj._id,
                             userId:
-                              this.props.userData._id === ""
+                              this.state.userData._id === ""
                                 ? ""
-                                : this.props.userData._id,
+                                : this.state.userData._id,
                           })
                           .then((res) => {
                             if (res.data.success) {
                               this.props.routerParams.history.push(
                                 `/news/single/${obj._id}`
                               );
+                              window.location.reload();
                             } else {
                               toast.warn("Error Occurred");
                             }
@@ -641,6 +642,7 @@ export default class NewsDetails extends Component {
                               this.props.routerParams.history.push(
                                 `/news/single/${obj._id}`
                               );
+                              window.location.reload();
                             } else {
                               toast.warn("Error Occurred");
                             }
