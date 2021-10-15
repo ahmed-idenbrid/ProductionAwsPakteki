@@ -104,11 +104,10 @@ export default function Categorybar({ pathname, history }) {
         ></div>
       </div>
       <div>
-        <div className="col-12 py-2 ranking-container-heading">
+        <div className="col-12 ranking-container-heading">
           <span
             onClick={openNav}
-            style={{ cursor: "pointer", padding: "6px 28px" }}
-          >
+            style={{ cursor: "pointer",fontWeight:"500",}}>
             Category {'>'}
           </span>
           <span

@@ -6,9 +6,7 @@
   display:flex;
   align-items:flex-start;
 }
-.ranking-container-heading {
-  background-color: #f8f9fa;
-}
+
 .ranking-news {
   width: 100%;
 }

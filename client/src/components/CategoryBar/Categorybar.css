@@ -25,12 +25,14 @@
   background: #fff;
   text-align: center;
 }
+
 .ranking-container-heading{
-  /* margin: 21px 0px 16px 0px;  STYLE-BEFORE-BREADCRUMB */
-  margin: 8px 0px 0px 0px;
+  background-color: #f8f9fa;
+  margin: 15px 0px 0px 0px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 15px 10px !important;
 }
 .sidebar_banner {
   max-width: 100%;
