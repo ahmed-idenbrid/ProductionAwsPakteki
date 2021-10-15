@@ -33,6 +33,12 @@ import Covid from "../components/Islam&CovidNews/Covid";
 import ChannelNews from "../components/ChannelNews/ChannelNews";
 
 export default class App extends Component {
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.id !== this.props.id) {
+      this.setState({externalData: null});
+      this._loadAsyncData(nextProps.id);
+    }
+  }
   render() {
     return (
       <BrowserRouter>

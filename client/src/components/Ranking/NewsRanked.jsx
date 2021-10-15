@@ -80,17 +80,12 @@ export default class NewsRank extends React.Component {
                       : this.props.rankedNewsObjIndex === 2
                         ? "green"
                         : "grey",
-              }}
-            >
+              }}>
               {this.props.rankedNewsObjIndex + 1}
             </div>
-            <div className='w-100 overflow-hidden'>
+            <div className='overflow-hidden w-100'>
               <div className='d-flex w-100'>
-                <img
-                  className="ranking-content-img"
-                  src={this.props.rankedNewsObj.image}
-                  alt="ranking-img"
-                />
+                <div className="ranking-content-img" style={{backgroundImage:`url(${this.props.rankedNewsObj.image})`}}></div>
                 <div className="ml-3 d-flex flex-column w-100">
                   <div className='news-detail-holder'>
                     <div className="title-rank-news">

@@ -86,15 +86,15 @@
   font-size: 14px;
 }
 .ranking-content-img {
-  height: 100px;
-  width: 100px;
-}
-
-@media (min-width: 500px) {
-  .ranking-content-img {
-    height: 90px;
-    width: 90px;
-  }
+    position: relative;
+    width: 155px;
+    height: 100px;
+    display: block;
+    background-color: #eee;
+    background-position: 50% 50%;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    border: 1px solid #eee;
 }
 .ml-24-p
 {

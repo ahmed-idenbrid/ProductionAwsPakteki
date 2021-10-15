@@ -62,7 +62,11 @@
 }
 
 .comments-icon {
-  padding: 0px 5px;
+    height: 10px;
+    width: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .comments-icon>svg {
@@ -76,11 +80,15 @@
 }
 
 .viewIcon {
-  padding-left: 6px;
+    height: 10px;
+    width: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .viewIcon>svg {
-  font-size: 15px;
+  font-size: 16px;
 }
 
 .counter-views {

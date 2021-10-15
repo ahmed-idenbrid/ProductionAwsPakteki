@@ -32,6 +32,8 @@ const smallNewsComponent = ({ newsObj }) => {
       setCurrentDate(new Date());
     }, 1000);
   }, []);
+
+
   return (
     <Fragment>
       <div className="smallNewsArticle">
