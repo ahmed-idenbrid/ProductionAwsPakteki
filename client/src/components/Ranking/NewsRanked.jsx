@@ -65,9 +65,7 @@ export default class NewsRank extends React.Component {
   }
 
   render() {
-    console.log(this.props.rankedNewsObj.channel,"channel");
     return (
-      // console.log(this.props.)
       <React.Fragment>
         <div className="row m-0 ranking-news">
           <div className="d-flex w-100">
@@ -174,15 +172,13 @@ export default class NewsRank extends React.Component {
               </div>
               {this.props.rankedNewsObj.comments.length > 0 ? (
                 <React.Fragment>
-                  <p className="rankedNewsComment"
+                  <div className="rankedNewsComment"
                     style={{ backgroundColor: "#edeff1", color: "#8d8d8d" }}>
                     <GrEmoji style={{ fontSize: "23px" }} /> &nbsp; 
-                    {/* user-profile-container */}
-                   
                     <div className='ranked-news-comment' style={{ WebkitBoxOrient: 'vertical' }}>
                       {this.props.rankedNewsObj.comments[0].comment}
                     </div>
-                  </p>
+                  </div>
                 </React.Fragment>
               ) : (
                 <React.Fragment>

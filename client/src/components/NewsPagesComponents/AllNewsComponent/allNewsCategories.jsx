@@ -9,15 +9,20 @@ import { toast } from "react-toastify";
 import { InView } from "react-intersection-observer";
 
 class AllNewsCategories extends Component {
-  state = {
-    AllNewsData: [],
-    mounted: false,
-    redirect: false,
-    limit: 20,
-    page: 1
-  };
-
+  
+  _isMounted = false;
+  constructor(props) {
+    super(props);
+    this.state = {
+      AllNewsData: [],
+      mounted: false,
+      redirect: false,
+      limit: 20,
+      page: 1
+    };
+  }
   async componentDidMount() {
+    this._isMounted = true;
     await this.getData(this.state.page, this.state.limit);
   }
   getData = async (page, limit) => {
@@ -26,13 +31,18 @@ class AllNewsCategories extends Component {
         let allnewsData = res.data.newsData.map((obj) => {
           return this.state.AllNewsData.push(obj)
         })
+        if (this._isMounted) {
         this.setState({
           mounted: true,
           AllNewsData: [...this.state.AllNewsData, allnewsData]
         })
       }
+    }
     });
   };
+  componentWillUnmount(){
+    this._isMounted = false;
+  }
   render() {
     return (
       <Fragment>

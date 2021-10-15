@@ -7,14 +7,19 @@ import { toast } from "react-toastify";
 import { InView } from "react-intersection-observer";
 
 class HealthNews extends Component {
-  state = {
-    NewsData: [],
-    mounted: false,
-    page: 1,
-    limit: 20
-  };
-
+  
+  _isMounted = false;
+  constructor(props) {
+    super(props);
+    this.state = {
+      NewsData: [],
+      mounted: false,
+      page: 1,
+      limit: 20
+    };
+  }
   componentDidMount() {
+    this._isMounted = true;
     this.getData(this.state.page,this.state.limit);
   }
   getData = (page,limit) => {
@@ -29,14 +34,18 @@ class HealthNews extends Component {
           const map = await res.data.newsData.map((chunk) => {
             return this.state.NewsData.push(chunk);
           });
+          if (this._isMounted) {
           this.setState({
             NewsData: [...this.state.NewsData, map],
             mounted: true,
           });
         }
+      }
       });
   };
-
+  componentWillUnmount(){
+    this._isMounted = false;
+  }
   render() {
     return (
       <Fragment>

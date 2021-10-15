@@ -27,22 +27,28 @@ import JhangNews from './PakNewsLogo/Jhang-News.svg';
 import Swiper from "swiper/swiper-bundle";
 import 'swiper/swiper-bundle.css';
 export default class Categories extends Component {
-  state = {
-    weatherCityName: "lahore",
-    currentTemp: "...",
-    TomorrowTemp: "...",
-    TomorrowHumidity: "...",
-    CurrentHumidity: "...",
-    WeatherIcon: "10d",
-    WeatherMain: "...",
-    key: "b9cfb1a798655c235698594be2c2a4ed",
-  };
+  _isMounted = false;
+  constructor(props) {
+    super(props);
+    this.state = {
+      weatherCityName: "lahore",
+      currentTemp: "...",
+      TomorrowTemp: "...",
+      TomorrowHumidity: "...",
+      CurrentHumidity: "...",
+      WeatherIcon: "10d",
+      WeatherMain: "...",
+      key: "b9cfb1a798655c235698594be2c2a4ed",
+    };
+  }
   componentDidMount() {
+    this._isMounted = true;
     axios
       .get(
         `https://api.openweathermap.org/data/2.5/weather?q=lahore&units=metric&appid=46368dc82bcd2961107873ea22aefdcf`
       )
       .then((response) => {
+        if (this._isMounted) {
         this.setState({
           currentTemp: response.data["main"]["temp"],
           CurrentHumidity: response.data["main"]["humidity"],
@@ -50,6 +56,7 @@ export default class Categories extends Component {
           WeatherMain: response.data["weather"][0]["main"],
           weatherCityName: response.data["name"],
         });
+      }
       });
     new Swiper('.swiper-container', {
       slidesPerView: 'auto',
@@ -90,6 +97,7 @@ export default class Categories extends Component {
           `https://api.openweathermap.org/data/2.5/forecast?lat=${position.coords.latitude}&units=metric&lon=${position.coords.longitude}&cnt=6&appid=${this.state.key}`
         )
         .then((response) => {
+          if (this._isMounted) {
           this.setState({
             currentTemp: response.data.list[0].main.temp,
             TomorrowTemp: response.data.list[1].main.temp,
@@ -97,19 +105,24 @@ export default class Categories extends Component {
             TomorrowHumidity: response.data.list[1].main.humidity,
             CurrentHumidity: response.data.list[0].main.humidity,
           });
+        }
         });
       axios
         .get(
           `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=46368dc82bcd2961107873ea22aefdcf`
         )
         .then((response) => {
+          if (this._isMounted) {
           this.setState({
             weatherCityName: response.data.name,
           });
+        }
         });
     });
   }
-
+  componentWillUnmount(){
+    this._isMounted = false;
+  }
   render() {
 
     return (
@@ -143,7 +156,7 @@ export default class Categories extends Component {
                 />
 
                 <p className="todays-weather">
-                  <div>Today</div>
+                  <span>Today</span>
                   <span>{this.state.currentTemp}&#176;</span>/
                   <span> {this.state.CurrentHumidity}%</span>
                 </p>
@@ -152,7 +165,7 @@ export default class Categories extends Component {
             <li className="sideBorders"></li>
             <div className="weather-numerical-data text-center">
               <p className="todays-weather">
-                <div>Tomorrow</div>
+                <span>Tomorrow</span>
                 <span> {this.state.TomorrowTemp}&#176; </span>/
                 <span> {this.state.TomorrowHumidity}%</span>
               </p>

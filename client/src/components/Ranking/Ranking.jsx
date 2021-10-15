@@ -10,23 +10,31 @@ import NavBar from "../NavBar/Navbar";
 import { toast } from "react-toastify";
 
 export default class Ranking extends Component {
-  state = {
-    AllRankingNews: [],
-    mounted: false,
-    userId: "",
-  };
-  
+  _isMounted = false;
+  constructor(props) {
+    super(props);
+    this.state = {
+      AllRankingNews: [],
+      mounted: false,
+      userId: "",
+    };
+  }
   componentDidMount() {
+    this._isMounted = true;
     axios.get(BaseURL + "/news/rankedNews").then((response) => {
       if (response.data.length > 0) {
+        if (this._isMounted) {
         this.setState({
           AllRankingNews: response.data,
           mounted: true,
         });
+      }
       } else {
+        if (this._isMounted) {
         this.setState({
           mounted: true,
         });
+      }
       }
     });
     const config = {
@@ -35,21 +43,23 @@ export default class Ranking extends Component {
       },
     };
     axios.get("http://3.142.50.232:5000/api/auth/user", config).then((res) => {
-      console.log(res);
       if (res.data.Message) {
         localStorage.removeItem("token");
         localStorage.removeItem("userData");
       } else {
         localStorage.setItem("userData", JSON.stringify(res.data));
+        if (this._isMounted) {
         this.setState({
           userId: res.data._id,
         });
       }
+      }
     });
   }
-
+  componentWillUnmount(){
+    this._isMounted = false;
+  }
   render() {
-    console.log(this.state.AllRankingNews);
     return (
       <Fragment>
         <NavBar />
@@ -61,8 +71,7 @@ export default class Ranking extends Component {
           {this.state.AllRankingNews.length === 0 && this.state.mounted ? (
             <div
               style={{ height: "78vh", width: "100%" }}
-              className="d-flex align-items-center justify-content-center bg-white"
-            >
+              className="d-flex align-items-center justify-content-center bg-white">
               <h1>No News To Show</h1>
             </div>
           ) : null}
