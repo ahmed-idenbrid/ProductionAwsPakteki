@@ -96,6 +96,12 @@
     background-repeat: no-repeat;
     border: 1px solid #eee;
 }
+
+@media (min-width: 769px) {
+  .ranking-content-img {
+    height: 126px;
+  }
+}
 .ml-24-p
 {
   margin-left: 24px;
