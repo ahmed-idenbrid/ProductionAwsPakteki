@@ -43,9 +43,9 @@ export default class Watch extends Component {
                   Bulletins and Exclusive Footages available round the clock.
                 </div>
                 <div className="d-flex align-items-center justify-content-end">
-                <div class="live-indicator-block">
-                    <span class="live-indicator">
-                            <i class="fa fa-circle blink"></i>Live
+                <div className="live-indicator-block">
+                    <span className="live-indicator">
+                            <i className="fa fa-circle blink"></i>Live
                     </span>
                   </div>
                 </div>
@@ -64,9 +64,9 @@ export default class Watch extends Component {
                   Bulletins, Special & Exclusive Coverage
                 </div>
                 <div className="d-flex align-items-center justify-content-end">
-                <div class="live-indicator-block">
-                    <span class="live-indicator">
-                            <i class="fa fa-circle blink"></i>Live
+                <div className="live-indicator-block">
+                    <span className="live-indicator">
+                            <i className="fa fa-circle blink"></i>Live
                     </span>
                   </div>
                 </div>
@@ -84,9 +84,9 @@ export default class Watch extends Component {
                   DUNYA NEWS LIVE 24/7, News Headlines, Bulletins and Shows
                 </div>
                 <div className="d-flex align-items-center justify-content-end">
-                <div class="live-indicator-block">
-                    <span class="live-indicator">
-                            <i class="fa fa-circle blink"></i>Live
+                <div className="live-indicator-block">
+                    <span className="live-indicator">
+                            <i className="fa fa-circle blink"></i>Live
                     </span>
                   </div>
                 </div>
@@ -105,9 +105,9 @@ export default class Watch extends Component {
                   updates
                 </div>
                 <div className="d-flex align-items-center justify-content-end">
-                <div class="live-indicator-block">
-                    <span class="live-indicator">
-                            <i class="fa fa-circle blink"></i>Live
+                <div className="live-indicator-block">
+                    <span className="live-indicator">
+                            <i className="fa fa-circle blink"></i>Live
                     </span>
                   </div>
                 </div>
@@ -126,9 +126,9 @@ export default class Watch extends Component {
                   Shahid Masood l Arif Hameed Bhatti.
                 </div>
                 <div className="d-flex align-items-center justify-content-end">
-                <div class="live-indicator-block">
-                    <span class="live-indicator">
-                            <i class="fa fa-circle blink"></i>Live
+                <div className="live-indicator-block">
+                    <span className="live-indicator">
+                            <i className="fa fa-circle blink"></i>Live
                     </span>
                   </div>
                 </div>
@@ -148,9 +148,9 @@ export default class Watch extends Component {
                   | Lahore Traffic Updates
                 </div>
                 <div className="d-flex align-items-center justify-content-end">
-                <div class="live-indicator-block">
-                    <span class="live-indicator">
-                            <i class="fa fa-circle blink"></i>Live
+                <div className="live-indicator-block">
+                    <span className="live-indicator">
+                            <i className="fa fa-circle blink"></i>Live
                     </span>
                   </div>
                 </div>
@@ -169,9 +169,9 @@ export default class Watch extends Component {
                   bringing you the latest current
                 </div>
                 <div className="d-flex align-items-center justify-content-end">
-                <div class="live-indicator-block">
-                    <span class="live-indicator">
-                            <i class="fa fa-circle blink"></i>Live
+                <div className="live-indicator-block">
+                    <span className="live-indicator">
+                            <i className="fa fa-circle blink"></i>Live
                     </span>
                   </div>
                 </div>
