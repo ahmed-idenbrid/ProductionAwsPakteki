@@ -10,33 +10,14 @@ import NavBar from "../NavBar/Navbar";
 import { toast } from "react-toastify";
 
 export default class Ranking extends Component {
-  _isMounted = false;
   constructor(props) {
     super(props);
     this.state = {
       AllRankingNews: [],
-      mounted: false,
       userId: "",
     };
   }
   componentDidMount() {
-    this._isMounted = true;
-    axios.get(BaseURL + "/news/rankedNews").then((response) => {
-      if (response.data.length > 0) {
-        if (this._isMounted) {
-        this.setState({
-          AllRankingNews: response.data,
-          mounted: true,
-        });
-      }
-      } else {
-        if (this._isMounted) {
-        this.setState({
-          mounted: true,
-        });
-      }
-      }
-    });
     const config = {
       headers: {
         "auth-token": localStorage.getItem("token"),
@@ -49,33 +30,32 @@ export default class Ranking extends Component {
       } else {
         localStorage.setItem("userData", JSON.stringify(res.data));
         if (this._isMounted) {
-        this.setState({
-          userId: res.data._id,
-        });
-      }
+          this.setState({
+            userId: res.data._id,
+          });
+        }
       }
     });
-  }
-  componentWillUnmount(){
-    this._isMounted = false;
   }
   render() {
     return (
       <Fragment>
         <NavBar />
         <CategoryBar
-          pathname={this.props.location.pathname}
-          history={this.props.history}
+          pathname={this.props.routerParams.location.pathname}
+          history={this.props.routerParams.history}
         />
         <div style={{ paddingBottom: "90px" }}>
-          {this.state.AllRankingNews.length === 0 && this.state.mounted ? (
+          {this.props.AllRankingNews.length === 0 &&
+          this.props.isFetched === true ? (
             <div
               style={{ height: "78vh", width: "100%" }}
-              className="d-flex align-items-center justify-content-center bg-white">
+              className="d-flex align-items-center justify-content-center bg-white"
+            >
               <h1>No News To Show</h1>
             </div>
           ) : null}
-          {this.state.mounted === false ? (
+          {this.props.isFetched === false ? (
             <div
               style={{ height: "50vh", width: "100%" }}
               className="d-flex align-items-center justify-content-center"
@@ -83,7 +63,7 @@ export default class Ranking extends Component {
               <Spinner animation="border" />
             </div>
           ) : (
-            this.state.AllRankingNews.splice(0, 20).map((obj, index) => {
+            this.props.AllRankingNews.splice(0, 20).map((obj, index) => {
               return (
                 <article
                   key={index}
@@ -97,12 +77,15 @@ export default class Ranking extends Component {
                       })
                       .then((res) => {
                         if (res.data.success) {
-                          this.props.history.push(`/news/single/${obj._id}`);
+                          this.props.routerParams.history.push(
+                            `/news/single/${obj._id}`
+                          );
                         } else {
                           toast.warn("Error Occurred");
                         }
                       });
-                  }}>
+                  }}
+                >
                   <NewsRanked rankedNewsObj={obj} rankedNewsObjIndex={index} />
                 </article>
               );

@@ -31,14 +31,36 @@ import TermsCondition from "../components/StaticPages/TermsAndConditions";
 import Islam from "../components/Islam&CovidNews/Islam";
 import Covid from "../components/Islam&CovidNews/Covid";
 import ChannelNews from "../components/ChannelNews/ChannelNews";
+import axios from "axios";
+import { BaseURL } from "./common";
 
 export default class App extends Component {
+  state = {
+    AllRankingNews: [],
+    fetched: false,
+  };
   componentWillReceiveProps(nextProps) {
     if (nextProps.id !== this.props.id) {
-      this.setState({externalData: null});
+      this.setState({ externalData: null });
       this._loadAsyncData(nextProps.id);
     }
   }
+
+  componentDidMount() {
+    axios.get(BaseURL + "/news/rankedNews").then((response) => {
+      if (response.data.length > 0) {
+        this.setState({
+          AllRankingNews: response.data,
+          fetched: true,
+        });
+      } else {
+        this.setState({
+          fetched: true,
+        });
+      }
+    });
+  }
+
   render() {
     return (
       <BrowserRouter>
@@ -52,7 +74,19 @@ export default class App extends Component {
                 return <SearchResultsComponent routerParams={routerParams} />;
               }}
             />
-            <Route exact path="/ranking" component={Ranking} />
+            <Route
+              exact
+              path="/ranking"
+              component={(routerParams) => {
+                return (
+                  <Ranking
+                    AllRankingNews={this.state.AllRankingNews}
+                    routerParams={routerParams}
+                    isFetched={this.state.fetched}
+                  />
+                );
+              }}
+            />
             <Route
               exact
               path="/ranking/:newsName"

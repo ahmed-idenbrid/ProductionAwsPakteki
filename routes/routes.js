@@ -482,7 +482,7 @@ router.post("/newsCommentDelete", async (req, res) => {
 router.get("/news/rankedNews", async (req, res) => {
   try {
     const GetAllNews = await AllNewsModal.find();
-    const rankedNews = await GetAllNews.sort(function (a, b) {
+    const rankedNews = GetAllNews.sort(function (a, b) {
       return (
         b.no_of_comments +
         b.no_of_registered_views +
