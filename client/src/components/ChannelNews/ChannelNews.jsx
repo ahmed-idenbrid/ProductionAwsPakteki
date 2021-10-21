@@ -35,7 +35,7 @@ export default class ChannelNews extends Component {
         "auth-token": localStorage.getItem("token"),
       },
     };
-    axios.get("http://3.142.50.232:5000/api/auth/user", config).then((res) => {
+    axios.get("hhttp://localhost:5000/api/auth/user", config).then((res) => {
       if (res.data.Message) {
         localStorage.removeItem("token");
         localStorage.removeItem("userData");
