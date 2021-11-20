@@ -94,7 +94,7 @@ export default function Sidebar({ history }) {
                 My page
               </Link>
               <Link to="/login" onClick={closeNav}>
-              {userData.username ? '' :  <small className="text-fade">Please login <IoIosArrowForward className='rightArrow' /></small> }
+                {userData.username ? '' : <small className="text-fade">Please login <IoIosArrowForward className='rightArrow' /></small> }
               </Link>
               </div>
               <div className="bgDarkTitle">
@@ -156,9 +156,8 @@ export default function Sidebar({ history }) {
                 <div
                   className="handleLogOut"
                   onClick={handleLogOut}
-                  style={{ cursor: "pointer" }}
-                >
-                  Logout
+                  style={{ cursor: "pointer" }}>
+                    Logout
                 </div>
               )}
               <div className="Companies">
