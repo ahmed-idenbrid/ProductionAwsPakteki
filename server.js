@@ -53,8 +53,8 @@ mongoose
   .then(() => {
     console.log("db connected");
   });
-var ip = process.env.IP;
-app.listen(PORT,ip, () =>
+// var ip = process.env.IP;
+app.listen(PORT, () =>
   console.log(
     `server is running on port ${process.env.NODE_ENV}:${PORT} Environment`
   )
